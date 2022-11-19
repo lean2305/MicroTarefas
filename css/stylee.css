@@ -1,0 +1,271 @@
+.logo {
+  padding: 20px 50px 20px 0;
+  font-size: 16px;
+  color: #e7e8ea;
+}
+.logo-det {
+  background: #4255d4;
+  padding: 8px;
+  margin-left: -2px;
+  border-radius: 50%;
+  font-size: 15px;
+}
+
+.nav,
+.slider {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  text-align: center;
+  padding: 0 2em;
+}
+
+.nav h1,
+.slider h1 {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 5vw;
+  margin: 0;
+  padding-bottom: 0.5rem;
+  letter-spacing: 0.3rem;
+  color: #679ed8;
+  transition: all 0.3s ease;
+  z-index: 3;
+}
+h1:hover {
+  transform: translate3d(0, -10px, 22px);
+  color: #2d6caf;
+}
+
+.slider h2 {
+  font-size: 2vw;
+  letter-spacing: 0.3rem;
+  font-family: "ROBOTO", sans-serif;
+  font-weight: 300;
+  color: #faebd7;
+  z-index: 4;
+}
+h3.span {
+  font-size: 2vw;
+  letter-spacing: 0.15rem;
+  font-family: "ROBOTO", sans-serif;
+  font-weight: 300;
+  color: #faebd7;
+  z-index: 4;
+}
+span:hover {
+  color: #4e02ff;
+  font-weight: 600;
+  cursor: context-menu;
+}
+
+a {
+  text-decoration: none;
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+
+  z-index: 999;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.nav-container--top-first {
+  position: fixed;
+  top: 75px;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.nav-container--top-second {
+  position: fixed;
+  top: 0;
+}
+.nav-container--top-second {
+  position: fixed;
+  top: 0;
+}
+
+.nav-tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  color: #03dac6;
+  letter-spacing: 0.1rem;
+  transition: all 0.5s ease;
+  font-size: 2vw;
+}
+
+.nav-tab:hover {
+  color: #1e1f26;
+  background: #03dac6;
+  transition: all 0.5s ease;
+}
+
+.nav-tab-slider {
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 5px;
+  background: #03dac6;
+  transition: left 0.3s ease;
+}
+.background {
+  position: absolute;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: auto;
+}
+@media (min-width: 800px) {
+  .nav h1,
+  .slider h1 {
+    font-size: 5vw;
+  }
+
+  .nav h2,
+  .slider h2 {
+    font-size: 3vw;
+  }
+
+  .nav-tab {
+    font-size: 3vw;
+  }
+}
+
+@media only screen and (min-width: 360px) {
+  .nav h1,
+  .slider h1 {
+    font-size: 8vw;
+  }
+
+  .nav h2,
+  .slider h2 {
+    font-size: 2vw;
+    letter-spacing: 0.2vw;
+  }
+
+  .nav-tab {
+    font-size: 1.2vw;
+  }
+}
+.background {
+  position: absolute;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+}
+.loader span {
+  color: #faebd7;
+  text-shadow: 0 0 0 #faebd7;
+  -webkit-animation: loading 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes loading {
+  to {
+    text-shadow: 20px 0 70px #ff0266;
+    color: #4e02ff;
+  }
+}
+.loader span:nth-child(2) {
+  -webkit-animation-delay: 0.1s;
+}
+.loader span:nth-child(3) {
+  -webkit-animation-delay: 0.2s;
+}
+.loader span:nth-child(4) {
+  -webkit-animation-delay: 0.3s;
+}
+.loader span:nth-child(5) {
+  -webkit-animation-delay: 0.4s;
+}
+.loader span:nth-child(6) {
+  -webkit-animation-delay: 0.5s;
+}
+.loader span:nth-child(7) {
+  -webkit-animation-delay: 0.6s;
+}
+.loader span:nth-child(8) {
+  -webkit-animation-delay: 0.7s;
+}
+.loader span:nth-child(9) {
+  -webkit-animation-delay: 0.8s;
+}
+
+.loader span:nth-child(10) {
+  -webkit-animation-delay: 0.9s;
+}
+.loader span:nth-child(11) {
+  -webkit-animation-delay: 1s;
+}
+.loader span:nth-child(12) {
+  -webkit-animation-delay: 1.1s;
+}
+.loader span:nth-child(13) {
+  -webkit-animation-delay: 1.2s;
+}
+.loader span:nth-child(14) {
+  -webkit-animation-delay: 1.3s;
+}
+.loader span:nth-child(15) {
+  -webkit-animation-delay: 1.4s;
+}
+.loader span:nth-child(16) {
+  -webkit-animation-delay: 1.5s;
+}
+.loader span:nth-child(17) {
+  -webkit-animation-delay: 1.6s;
+}
+.loader span:nth-child(18) {
+  -webkit-animation-delay: 1.7s;
+}
+.loader span:nth-child(19) {
+  -webkit-animation-delay: 1.8s;
+}
+.loader span:nth-child(20) {
+  -webkit-animation-delay: 1.9s;
+}
+.loader span:nth-child(21) {
+  -webkit-animation-delay: 2s;
+}
+.loader span:nth-child(22) {
+  -webkit-animation-delay: 2.1s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.micro{
+  display: block;
+  color: white;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
