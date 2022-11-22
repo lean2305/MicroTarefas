@@ -184,15 +184,16 @@ if($ress=mysqli_query($conn,$form)){
   <div class="fundo">
    <h2 style="text-align:center;">Provas</h2>
   </div>
-<h3 ><?php echo $provas[$iol]; ?></h3>
- 
-    <input  style="border-radius: 7px;color: white;background-color: #1a2049;border: 3px solid #1a2049;" type="hidden" id="valor" name="valor" value="<?php   ?>">
-    
+<h3 style="margin:10px"><?php echo $provas[$iol]; ?></h3>
+<div class="fundo">
+   <h2 style="text-align:center;">Print screen</h2>
+  </div>
+    <center>
     
     <?php   foreach ($album as $foto)   {     ?>
-     <img src="<?php echo "./print/".$foto["print"] ?>" alt="">
+     <img style="border-radius:7px" src="<?php echo "./print/".$foto["print"] ?>" alt="">
 <?php   }     ?>
-
+    </center>
 
           
     <script>
@@ -214,10 +215,15 @@ setInterval('autoRefresh()', 600000);
 
    
 <br> <br>   
+
 </div>
-<?php echo "<a class='cards-button button' href='pagar.php?id=" . $reg['id_prova'] . "'>Pagar</a><br>"; ?><br>
-          <?php echo "<a class='cards-button button' href='recusar.php?id=" . $reg['id_prova'] . "'>Recusar</a><br>"; ?>
+
+<center>
+<?php echo "<a class='cards-button pagar' href='pagar.php?id=" . $reg['id_prova'] . "'>Pagar</a>"; ?>
+<?php echo "<a class='cards-button recusar' href='recusar.php?id=" . $reg['id_prova'] . "'>Recusar</a>"; ?>
+</center>
 </div>   
+
     </div>
 </form>
 

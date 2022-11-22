@@ -198,6 +198,41 @@ body {
   background: #303371;
 }
 
+.pagar {
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  color: white;
+  background: green;
+  border: none;
+  padding: 2px 12px;
+  border-radius: 4px;
+  margin-right: 20px;
+  text-decoration: none;
+  
+}
+.pagar:hover{
+  background: #005800;
+}
+
+.recusar {
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  color: white;
+  background: red;
+  border: none;
+  padding: 2px 12px;
+  border-radius: 4px;
+  margin-right: 20px;
+  text-decoration: none;
+  
+}
+
+.recusar:hover{
+  background: rgb(199, 1, 1);
+}
+
 
 .button svg {
   margin-left: 10px;
@@ -1065,8 +1100,4 @@ div.info{
 
 div.fundo{
 background-color: #11152f;
-}
-
-h2{
-  
 }
