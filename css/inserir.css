@@ -1058,3 +1058,13 @@ body {
   text-decoration: none;
 }
 
+.select{
+  text-transform: none;
+    background: #051340;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    height: 25px;
+    text-align: center;
+    width: 120px;
+}

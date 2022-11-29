@@ -28,13 +28,13 @@ $user = $_SESSION['user'];//vai buscar o nome de usuario da sessao
 $assunto = filter_input(INPUT_POST,'assunto', FILTER_SANITIZE_STRING);
 $descricao = filter_input(INPUT_POST,'w3review', FILTER_SANITIZE_STRING);
 $valor = filter_input(INPUT_POST,'valor', FILTER_SANITIZE_STRING);
+$categoria = filter_input(INPUT_POST,'inserir', FILTER_SANITIZE_STRING);
 
 
 
 
 
-
-$result_usuario="INSERT INTO trabalho (assunto, descricao,valor,usuario) VALUES('$assunto','$descricao','$valor','$user')";
+$result_usuario="INSERT INTO trabalho (assunto, descricao,valor,usuario,categoria) VALUES('$assunto','$descricao','$valor','$user','$categoria')";
 
 
 $resultado_usuario = mysqli_query($conn, $result_usuario);

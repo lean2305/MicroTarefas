@@ -11,6 +11,7 @@ $dbname = "conect";
 
 $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
+
 if((!isset($_SESSION['user']) == true) and (!isset($_SESSION['Senha']) == true)){
 
     unset($_SESSION['user']);
@@ -31,8 +32,8 @@ $dado = mysqli_query($conn,"SELECT * FROM provas");
 //Buscar dados da tabela form
 $saldo = mysqli_query($conn,"SELECT * FROM form");//
 
-
-
+//Buscar categoria
+$categoria = filter_input(INPUT_POST,'select', FILTER_SANITIZE_STRING);
 
 
 //buscar tudo na tabela form onde for igual a sessão da pessoa
@@ -203,9 +204,9 @@ if($res=mysqli_query($conn,$sqlo)){
 
       <!--Codigo php para obter dados e exibir no site--->
       <?php 
-
+$categoria = filter_input(INPUT_POST,'select', FILTER_SANITIZE_STRING);
   //buscar tudo na tabela trabalho    
-  $sql = 'SELECT * FROM trabalho ';
+  $sql = "SELECT * FROM trabalho WHERE categoria = '$categoria'";
   
   
   

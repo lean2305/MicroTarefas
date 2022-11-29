@@ -1068,3 +1068,14 @@ body {
   line-height: 16px;
  
 }
+
+.select{
+  text-transform: none;
+    background: #051340;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    height: 25px;
+    text-align: center;
+    width: 120px;
+}

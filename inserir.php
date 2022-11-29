@@ -124,13 +124,57 @@ if($ress=mysqli_query($conn,$form)){
 
     <input class="activity card"  style="color:white;" type="text" id="valor" name="valor" placeholder="valor ex:0.05 (valor por pessoa)" me-5 onchange="this.value = this.value.replace(/,/g, '.')"/><br>
    
-<br>   <button class="button" type="submit" name="btn" class="btn btn-primary btn-block btn-large">Publicar</button>
 
 </div>
 </center>
+
+
+     <select class="select" name="inserir">
+        <option name="inserir" value="" disabled selected>Categoria</option> 
+        <?php 
+
+$sql ='SELECT * FROM categoria';
+
+if($res=mysqli_query($conn,$sql)){
+
+    $categoria = array();
+
+    $iol = 0;
+
+    while($reg=mysqli_fetch_assoc($res)){
+
+    $categoria[$iol] = $reg['nome'];
+
+
+?>
+        
+        <option name="inserir" value="<?php echo $categoria[$iol]; ?>" ><?php echo $categoria[$iol]; ?></option> 
+        
+        
+
+
+        <?php
+        
+    }}
+        
+        ?>
+    </select>
+    <br>   <button class="button" type="submit" name="btn" class="btn btn-primary btn-block btn-large">Publicar</button>
+ 
+    <?php 
+    
+    if(isset($_SESSION['msg'])){
+            echo $_SESSION['msg'];
+            unset($_SESSION['msg']);
+        } 
+        
+        
+        
+    ?>
+   </div>
+
+
 </form>
-  
-  
      </div>
      <div class="cards-header-date">
     <!-- div sem conteudo--->
