@@ -1071,11 +1071,16 @@ body {
 
 .select{
   text-transform: none;
-    background: #051340;
+    background: #1a2049;
     border-radius: 5px;
     color: white;
     border: none;
     height: 25px;
     text-align: center;
     width: 120px;
+}
+
+.categoria{
+  padding-top: 7px;
+  padding-bottom: 7px;
 }

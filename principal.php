@@ -146,15 +146,7 @@ if($ress=mysqli_query($conn,$form)){
      <div class="cards-header-date">
     <!-- div sem conteudo--->
      </div>
-     <div class="cards-button button">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
-       <path d="M12 5v14M5 12h14"></path>
-      </svg>
-     <a style="text-decoration:none;color:white" href="inserir.php"> Criar nova tarefa</a>
-     </div>
-    </div>
-    <center>
-    <form  method="post" action="principal2.php">
+     <form  method="post" action="principal2.php">
     <select class="select" name="select">
         <option name="select" value="" disabled selected>Categoria</option> 
         <?php 
@@ -188,6 +180,15 @@ if($res=mysqli_query($conn,$sqlo)){
     <button class="select"  type="submit" class="bubbly-button">Pesquisar</button>
   </center>
   </form>
+     <div class="cards-button button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+       <path d="M12 5v14M5 12h14"></path>
+      </svg>
+     <a style="text-decoration:none;color:white" href="inserir.php"> Criar nova tarefa</a>
+     </div>
+    </div>
+    
+  
     <div class="cards card">
     
     
