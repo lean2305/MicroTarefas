@@ -160,9 +160,6 @@ if($ress=mysqli_query($conn,$form)){
 
 
 
- 
- 
-
   
   if($res=mysqli_query($conn,$sql)){
   
@@ -191,13 +188,49 @@ if($ress=mysqli_query($conn,$form)){
     $estado[$iol] = $reg['estado'] ; 
     
 
+      	//Receber o número da página
+        $pagina_atual = filter_input(INPUT_GET,'pagina', FILTER_SANITIZE_NUMBER_INT);		
+        $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
+        
+        //Setar a quantidade de itens por pagina
+        $qnt_result_pg = 1;
+        
+        //calcular o inicio visualização
+        $inicio = ($qnt_result_pg * $pagina) - $qnt_result_pg;
+          $result_pg = "SELECT COUNT(id) AS num_result FROM historico_tarefa";
+          $resultado_pg = mysqli_query($conn, $result_pg);
+          $row_pg = mysqli_fetch_assoc($resultado_pg);
+          //echo $row_pg['num_result'];
+          //Quantidade de pagina 
+          $quantidade_pg = ceil($row_pg['num_result'] / $qnt_result_pg);
+          
+          //Limitar os link antes depois
+          $max_links = 2;
+          //echo "<a href='perfil.php?pagina=1'>&nbsp;</a> ";
+          
+          for($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++){
+            if($pag_ant >= 1){
+              //echo "<a href='perfil.php?pagina=$pag_ant' >$pag_ant</a> ";
+            }
+          }
+            
+            
+          //echo "$pagina ";
+          
+          for($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++){
+            if($pag_dep <= $quantidade_pg){
+              //echo "<a href='perfil.php?pagina=$pag_dep'>$pag_dep</a> ";
+            }
+          }
+          
+      
       
   ?>
   
 
   
       <tbody>
-       <tr onclick="window.open('submeter.html','pagename','resizable,height=570,width=700'); <!--onclick=" document.location="perfil.php" ;="">
+       <tr>
         <td style=" padding-left: 30px;">
          
          <span><?php echo $prova[$iol]; ?></span>
@@ -207,8 +240,9 @@ if($ress=mysqli_query($conn,$form)){
         <td style=" padding-left: 30px;"><?php echo $id[$iol]; ?></td>
         <td style=" padding-left: 30px;"><?php echo $valor[$iol]; ?></td>
         <td style=" padding-left: 30px;"><?php echo $estado[$iol]; ?></td>
-       
+        <td style=" padding-left: 30px; "><?php echo "<a class='cards-button buttonver'style=' text-decoration: none; color: blue;' href='out_perfil.php?id=" . $reg['id'] . "'>Perfil</a><br>"; ?></td>
       
+
       
        </tr>
        

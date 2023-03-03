@@ -151,7 +151,7 @@ if($ress=mysqli_query($conn,$form)){
         <option name="select" value="" disabled selected>Categoria</option> 
         <?php 
 
-$sqlo ='SELECT * FROM trabalho';
+$sqlo ='SELECT * FROM categoria';
 
 if($res=mysqli_query($conn,$sqlo)){
 
@@ -269,7 +269,7 @@ if($res=mysqli_query($conn,$sqlo)){
 
   
       <tbody>
-       <tr >
+       <tr>
         <td>
          <span><?php echo $trblh_asunto[$iol]; ?></span>
         </td>

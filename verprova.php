@@ -172,28 +172,67 @@ if($ress=mysqli_query($conn,$form)){
     ?>
     
      
-<center>   
-<h2 style="margin-left:1.5%">Nome:<?php echo $trabalhador[$iol]; ?> | Id prova:<?php echo $id_prova[$iol]; ?> | Preço:<?php echo $valor[$iol]; ?>€</h2>
+<center>
+
+
+<!--Nome--->
+<div class="infor">
+  <div style="background-color:#252954;border-radius: 10px;">
+    <h2>&nbsp NOME &nbsp</h2>
+  </div>
+  <h2><?php echo $trabalhador[$iol]; ?></h2>
+</div>
+
+
+<!--ID--->
+<div class="infor">
+  <div style="background-color:#252954;border-radius: 10px;">
+    <h2>&nbsp ID &nbsp</h2>
+  </div>
+  <h2><?php echo $id_prova[$iol]; ?></h2>
+</div>
+
+
+<!--Preço--->
+<div class="infor">
+  <div style="background-color:#252954;border-radius: 10px;">
+    <h2>&nbsp PREÇO &nbsp</h2>
+  </div>
+  <h2><?php echo $valor[$iol]; ?>€</h2>
+</div>
+
+<div>
+</div>
+
 </center>
 
   <form method="POST" action="submeter.php"   enctype="multipart/form-data">
 
 
 <div class="form" style=" padding-left: 22px;">
+
 <div class="info">
-  <div class="fundo">
-   <h2 style="text-align:center;">Provas</h2>
+<div style="display: flex;">
+  <div style="flex: 1;"><div class="fundo">
+    <h2 style="text-align:center;">Provas</h2>
   </div>
-<h3 style="margin:10px"><?php echo $provas[$iol]; ?></h3>
-<div class="fundo">
+    <h3 style="margin:10px"><?php echo $provas[$iol]; ?></h3>
+</div>
+
+<!--Barra preta para centrar divs--->
+<div style="width:7px; background-color:black;height: 100%;"></div>
+
+
+<div style="flex: 1;"><div class="fundo">
    <h2 style="text-align:center;">Print screen</h2>
-  </div>
+</div>
     <center>
     
-    <?php   foreach ($album as $foto)   {     ?>
+<?php   foreach ($album as $foto)   {     ?>
      <img style="border-radius:7px" src="<?php echo "./print/".$foto["print"] ?>" alt="">
 <?php   }     ?>
-    </center>
+    </center></div>
+</div>
 
           
     <script>
@@ -217,6 +256,8 @@ setInterval('autoRefresh()', 600000);
 <br> <br>   
 
 </div>
+
+
 
 <center>
 <?php echo "<a class='cards-button pagar' href='pagar.php?id=" . $reg['id_prova'] . "'>Pagar</a>"; ?>

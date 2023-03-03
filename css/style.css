@@ -554,6 +554,7 @@ body {
   font-size: 13px;
   cursor: pointer;
   border-radius: 8px;
+  margin-top: 1%;
 }
 
 .cards-header {
@@ -1100,4 +1101,14 @@ div.info{
 
 div.fundo{
 background-color: #11152f;
+}
+
+div.infor{
+  display: inline-block;
+  padding-right: 100px;
+  padding-left: 100px;
+}
+
+div.tblhassunto{
+  display: flex;
 }

@@ -143,7 +143,7 @@ if($res=mysqli_query($conn,$sql)){
 
     while($reg=mysqli_fetch_assoc($res)){
 
-    $categoria[$iol] = $reg['nome'];
+    $categoria[$iol] = $reg['categoria'];
 
 
 ?>

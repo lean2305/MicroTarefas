@@ -35,8 +35,6 @@ $categoria = filter_input(INPUT_POST,'inserir', FILTER_SANITIZE_STRING);
 
 
 $result_usuario="INSERT INTO trabalho (assunto, descricao,valor,usuario,categoria) VALUES('$assunto','$descricao','$valor','$user','$categoria')";
-
-
 $resultado_usuario = mysqli_query($conn, $result_usuario);  
 
 

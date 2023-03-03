@@ -121,6 +121,7 @@ if($ress=mysqli_query($conn,$form)){
   <?php  }}    ?>
    
   </div>
+ 
    <!-- codigo saldo -->
   <div class="user-box second-box">
    <div class="cards-wrapper" style="--delay: 1s">
@@ -162,11 +163,30 @@ if($ress=mysqli_query($conn,$form)){
     $id_trabalho[$iol] = $reg['id_trabalho']; // buscar o id do trabalho
 
     ?>
-    <center>
-     <h1><?php echo $trblh_asunto[$iol]; ?></h1><br>
-  </center>
 
-  <h2 style="margin-left:1.5%">O que se espera dos trabalhadores?</h2>
+<?php 
+
+$sql  ="SELECT * from arquivo where usuario = 'leandro' ";
+$resultado = $conn->query($sql);
+
+while ($linha = mysqli_fetch_array($resultado)){
+
+    $album [] = $linha;
+
+}
+
+?>
+
+<div class="account-profile">
+
+<?php   foreach ($album as $foto)   {     ?>
+     <img src="<?php echo "./foto/".$foto["nome"] ?>" alt="">
+     <h4 style="margin-left:1.5%"><?php echo $trblh_user[$iol]; ?></h4>
+<?php   }     ?>
+</div>
+   
+
+  <h1 style="margin-left:1.5%">O que se espera do trabalhador?</h1>
   <h4 style="margin-left:1.5%"><?php echo $trblh_descricao[$iol]; ?></h4>
   <form method="POST" action="submeter.php"  enctype="multipart/form-data">
 
@@ -179,17 +199,17 @@ if($ress=mysqli_query($conn,$form)){
     <input  style="border-radius: 7px;color: white;background-color: #1a2049;border: 3px solid #1a2049;" type="hidden" id="valor" name="valor" value="<?php echo $trblh_valor[$iol];  ?>">
     
 
-<div class="l-containe">
-<div class="button-wrapper">
-  <span class="label">
+  <div class="l-containe">
+    <div class="button-wrapper">
+      <span class="label">
  
-  </span>
-  <br>  <br> 
-    <input class="button offer-button" type="file"name="arquivo" id="upload" class="upload-box" placeholder="Upload File"><br>  
+      </span>
+      <br>  <br> 
+      <input class="button offer-button" type="file"name="arquivo" id="upload" class="upload-box" placeholder="Upload File"><br>  
     
-</div>
+    </div>
 
-</div>
+    </div>
 
 
           
@@ -203,15 +223,15 @@ if($ress=mysqli_query($conn,$form)){
         
     </script>
     <script>
-function autoRefresh() {
-window.location = window.location.href;
-}
-setInterval('autoRefresh()', 600000);
-</script>
+      function autoRefresh() {
+      window.location = window.location.href;
+      }
+      setInterval('autoRefresh()', 600000);
+    </script>
     
 
-   
-<br> <br>   <button style="border-radius: 7px;color: white;background-color: #1a2049;border: 3px solid #1a2049;" type="submit" name="btn" class="btn btn-primary btn-block btn-large">Enviar</button>
+    <br><br>
+    <button style="border-radius: 7px;color: white;background-color: #1a2049;border: 3px solid #1a2049;" type="submit" name="btn" class="btn btn-primary btn-block btn-large">Enviar</button>
 
 </div>
 
