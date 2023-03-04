@@ -237,16 +237,17 @@ while ($linha = mysqli_fetch_array($resultado)){
       
        <div class="degree">
        
-       <div class="account-cash">
-       <div class="stars">
+        <div class="account-cash">
+          <div class="stars">
 
-            <span onclick="parent.location='avaliacao.php?value=1&nome=<?php echo $empregador[$iol] ?>'" class="star">★</span>
-            <span onclick="parent.location='avaliacao.php?value=2&nome=<?php echo $empregador[$iol] ?>'" class="star">★</span>
-            <span onclick="parent.location='avaliacao.php?value=3&nome=<?php echo $empregador[$iol] ?>'" class="star">★</span>
-            <span onclick="parent.location='avaliacao.php?value=4&nome=<?php echo $empregador[$iol] ?>'" class="star">★</span>
-            <span onclick="parent.location='avaliacao.php?value=5&nome=<?php echo $empregador[$iol] ?>'" class="star">★</span>
-        </div>    
-    </div>
+              <span onclick="parent.location='avaliacao.php?value=1&nome=<?php echo $empregador[$iol] ?>'" class="star">★</span>
+              <span onclick="parent.location='avaliacao.php?value=2&nome=<?php echo $empregador[$iol] ?>'" class="star">★</span>
+              <span onclick="parent.location='avaliacao.php?value=3&nome=<?php echo $empregador[$iol] ?>'" class="star">★</span>
+              <span onclick="parent.location='avaliacao.php?value=4&nome=<?php echo $empregador[$iol] ?>'" class="star">★</span>
+              <span onclick="parent.location='avaliacao.php?value=5&nome=<?php echo $empregador[$iol] ?>'" class="star">★</span>
+
+          </div>    
+        </div>
        
        </div>
       
@@ -255,7 +256,7 @@ while ($linha = mysqli_fetch_array($resultado)){
       
       </svg>
      </div>
-     <div  class="button offer-button"><a class="depositar"  href="levantar.php" style="color:white;text-decoration:none">Levantar</a></li></div>
+     
      
      
     </div>
