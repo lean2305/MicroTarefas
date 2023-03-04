@@ -16,6 +16,7 @@ if((!isset($_SESSION['user']) == true) and (!isset($_SESSION['Senha']) == true))
     header('Location: login.php');
 }
 
+
 $logado =$_SESSION['user'];
 
 $logado == '$logado';
