@@ -18,7 +18,7 @@ if((!isset($_SESSION['user']) == true) and (!isset($_SESSION['Senha']) == true))
     header('Location: login.php');
 }
 
-//Buscar o nome do usuario da sessao 
+//Buscar o nome do utilizador da sessao 
 $logado =$_SESSION['user'];
 
 
@@ -36,7 +36,7 @@ $saldo = mysqli_query($conn,"SELECT * FROM form");//
 
 
 //buscar tudo na tabela form onde for igual a sessão da pessoa
-$form = "SELECT * FROM form where usuario = '$logado' ";
+$form = "SELECT * FROM form where utilizador = '$logado' ";
 
 //Conecta com a sessão para obter o saldo para exibir
 if($ress=mysqli_query($conn,$form)){
@@ -54,7 +54,7 @@ if($ress=mysqli_query($conn,$form)){
 
         
      
-$sql  ="SELECT * from arquivo where usuario = '$logado' ";
+$sql  ="SELECT * from arquivo where utilizador = '$logado' ";
 $resultado = $conn->query($sql);
 
 
@@ -85,7 +85,7 @@ while ($linha = mysqli_fetch_array($resultado)){
 </head>
 <body>
 
-<!-- Header contendo botões, saldo e nome do usuario -->
+<!-- Header contendo botões, saldo e nome do utilizador -->
 <div class="wrapper">
  <div class="left-side">
  <svg xmlns="http://www.w3.org/2000/svg" onclick="parent.location='perfil.php'" width="20" height="20" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
@@ -206,7 +206,7 @@ while ($linha = mysqli_fetch_array($resultado)){
 
       <div class="chat-list-header">Amigos<span class="c-number"><?php 
       
-      $query= "SELECT id_amigo from amigos where usuario = '$logado'";
+      $query= "SELECT id_amigo from amigos where utilizador = '$logado'";
       $query_run = mysqli_query($conn,$query);
 
       $row = mysqli_num_rows($query_run);
@@ -231,20 +231,20 @@ $qnt_result_pg = 1;
 $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
 //calcular o inicio visualização
 $inicio = ($qnt_result_pg * $pagina) - $qnt_result_pg;
-    $sql = "SELECT * FROM amigos Where usuario =  '$logado'";//buscar tudo na tabela trabalho
-		$result_usuarios = "SELECT * FROM amigos Where usuario =  '$logado' ";
-		$resultado_usuarios = mysqli_query($conn, $result_usuarios);
+    $sql = "SELECT * FROM amigos Where utilizador =  '$logado'";//buscar tudo na tabela trabalho
+		$result_utilizadors = "SELECT * FROM amigos Where utilizador =  '$logado' ";
+		$resultado_utilizadors = mysqli_query($conn, $result_utilizadors);
 if($res=mysqli_query($conn,$sql)){
   
 
-  $usuario = array();
+  $utilizador = array();
   $amigo = array();
 
   $iol = 0;
 
 while($reg=mysqli_fetch_assoc($res)){     
   
-      $usuario[$iol] = $reg['usuario'] ;  //buscar dados na tabela trabalho coluna assunto
+      $utilizador[$iol] = $reg['utilizador'] ;  //buscar dados na tabela trabalho coluna assunto
       $amigo[$iol] = $reg['amigo'] ;
 
       //Paginção - Somar a quantidade de usuários
@@ -257,7 +257,7 @@ while($reg=mysqli_fetch_assoc($res)){
 
         <?php
 
-            $sqli = "SELECT * FROM amigos where usuario = '$logado' ";
+            $sqli = "SELECT * FROM amigos where utilizador = '$logado' ";
           
   
   
@@ -272,7 +272,7 @@ while($reg=mysqli_fetch_assoc($res)){
                 while($reg=mysqli_fetch_assoc($res)){
 
                     $tbl_amigo[$iol] = $reg['amigo'] ;  //buscar dados na tabela trabalho coluna amigo
-                    $tbl_usuario[$iol] = $reg['usuario'] ;  //buscar dados na tabela trabalho coluna amigo
+                    $tbl_utilizador[$iol] = $reg['utilizador'] ;  //buscar dados na tabela trabalho coluna amigo
                    
                     
 
@@ -284,7 +284,7 @@ while($reg=mysqli_fetch_assoc($res)){
 ?>
 
 
-<?php   $sqlu  ="SELECT * from arquivo where usuario = '$tbl_amigo[$iol]' ";
+<?php   $sqlu  ="SELECT * from arquivo where utilizador = '$tbl_amigo[$iol]' ";
                     $resultadoo = $conn->query($sqlu);
 
 
@@ -333,13 +333,13 @@ if($res=mysqli_query($conn,$sqli)){
     $iol = 0;
 
     while($reg=mysqli_fetch_assoc($res)){
-      $tbl_amigos[$iol] = $reg['usuario'] ;  //buscar dados na tabela trabalho coluna amigo
+      $tbl_amigos[$iol] = $reg['utilizador'] ;  //buscar dados na tabela trabalho coluna amigo
      
     
      
 ?>
 
-<?php   $sqlu  ="SELECT * from arquivo where usuario = '$tbl_amigos[$iol]' ";
+<?php   $sqlu  ="SELECT * from arquivo where utilizador = '$tbl_amigos[$iol]' ";
                     $resultadoo = $conn->query($sqlu);
 
 

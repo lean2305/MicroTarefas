@@ -36,7 +36,7 @@ $saldo = mysqli_query($conn,"SELECT * FROM form");//
 
 
 
-$form = "SELECT * FROM form where usuario = '$logado' ";//buscar tudo na tabela form onde for igual a sessão da pessoa
+$form = "SELECT * FROM form where utilizador = '$logado' ";//buscar tudo na tabela form onde for igual a sessão da pessoa
 if($ress=mysqli_query($conn,$form)){
   
 
@@ -169,7 +169,7 @@ if($ress=mysqli_query($conn,$form)){
 
 
 
-  $sql = "SELECT * FROM trabalho where usuario = '$logado' ";//buscar tudo na tabela trabalho do proprio login
+  $sql = "SELECT * FROM trabalho where utilizador = '$logado' ";//buscar tudo na tabela trabalho do proprio login
  
 
   
@@ -186,7 +186,7 @@ if($ress=mysqli_query($conn,$form)){
   
       $trblh_asunto[$iol] = $reg['assunto'] ;  //buscar dados na tabela trabalho coluna assunto
       $trblh_valor[$iol] = $reg['valor'] ;  //buscar dados na tabela trabalho coluna valor
-      $trblh_user[$iol] = $reg['usuario'] ;  //buscar nome da pessoa que inseriu o trabalho
+      $trblh_user[$iol] = $reg['utilizador'] ;  //buscar nome da pessoa que inseriu o trabalho
       $trblh_descricao[$iol] = $reg['descricao'] ;  //buscar descrição da pessoa que inseriu o trabalho
     
 

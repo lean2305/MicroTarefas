@@ -21,11 +21,11 @@ if((!isset($_SESSION['user']) == true) and (!isset($_SESSION['Senha']) == true))
 
 $logado =$_SESSION['user'];
 
-$usuario = "SELECT * FROM form where usuario = '$logado' ";//buscar nome usuario logado
+$utilizador = "SELECT * FROM form where utilizador = '$logado' ";//buscar nome utilizador logado
 
 
 
-$saldo = "SELECT * FROM form  ";//buscar nome usuario logado
+$saldo = "SELECT * FROM form  ";//buscar nome utilizador logado
 $resultado_saldoo = mysqli_query($conn, $saldo);
 
 
@@ -76,8 +76,8 @@ $result_historico="INSERT INTO historico_tarefa (empregador, trabalhador,valor,e
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 if(!empty($id)){
 	$resultado_historico = mysqli_query($conn, $result_historico);
-	$result_usuario = "DELETE FROM provas WHERE id_prova='$id'";
-	$resultado_usuario = mysqli_query($conn, $result_usuario);
+	$result_utilizador = "DELETE FROM provas WHERE id_prova='$id'";
+	$resultado_utilizador = mysqli_query($conn, $result_utilizador);
 	if(mysqli_affected_rows($conn)){
 		$_SESSION['msg'] = "<p style='color:green;'>Usuário recusado com sucesso</p>";
 		header("Location: index.php");

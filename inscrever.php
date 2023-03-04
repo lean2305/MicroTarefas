@@ -20,9 +20,9 @@ $snome = addslashes(filter_input(INPUT_POST,'snome', FILTER_SANITIZE_STRING));
 
 //echo "Nome: $nome <br>";
 
-$result_usuario="INSERT INTO form (usuario, password,nome,sobrenome) VALUES('$nome','$senha','$pnome','$snome')";
+$result_utilizador="INSERT INTO form (utilizador, password,nome,sobrenome) VALUES('$nome','$senha','$pnome','$snome')";
 
-$resultado_usuario = mysqli_query($conn, $result_usuario);
+$resultado_utilizador = mysqli_query($conn, $result_utilizador);
 
 
 if(mysqli_insert_id($conn)){
@@ -40,7 +40,7 @@ if(mysqli_insert_id($conn)){
     //Vai usar um foto default
     
     $query = mysqli_query($conn, "INSERT INTO arquivo (
-        nome,usuario) VALUES('download.png','$nome')");
+        nome,utilizador) VALUES('download.png','$nome')");
      
     
 

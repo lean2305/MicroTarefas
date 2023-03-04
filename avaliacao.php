@@ -25,7 +25,7 @@ if((!isset($_SESSION['user']) == true) and (!isset($_SESSION['Senha']) == true))
 $logado =$_SESSION['user'];
 
 
-$sql= "SELECT * FROM form where usuario = '$empregador' ";//buscar tudo na tabela form onde for igual a sessão da pessoa
+$sql= "SELECT * FROM form where utilizador = '$empregador' ";//buscar tudo na tabela form onde for igual a sessão da pessoa
 if($ress=mysqli_query($conn,$sql)){
   
 
@@ -43,7 +43,7 @@ if($ress=mysqli_query($conn,$sql)){
         echo $dividir;
      
 
-        $result_avaliacao="UPDATE form SET avaliacao = '$dividir' WHERE usuario = '$empregador'  ";
+        $result_avaliacao="UPDATE form SET avaliacao = '$dividir' WHERE utilizador = '$empregador'  ";
         $resultado_avaliacao = mysqli_query($conn, $result_avaliacao);
     }}
 ?>

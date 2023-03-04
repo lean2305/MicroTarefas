@@ -21,7 +21,7 @@ if((!isset($_SESSION['user']) == true) and (!isset($_SESSION['Senha']) == true))
 
 $logado =$_SESSION['user'];
 
-$user = $_SESSION['user'];//vai buscar o nome de usuario da sessao 
+$user = $_SESSION['user'];//vai buscar o nome de utilizador da sessao 
 
 
 
@@ -34,8 +34,8 @@ $categoria = filter_input(INPUT_POST,'inserir', FILTER_SANITIZE_STRING);
 
 
 
-$result_usuario="INSERT INTO trabalho (assunto, descricao,valor,usuario,categoria) VALUES('$assunto','$descricao','$valor','$user','$categoria')";
-$resultado_usuario = mysqli_query($conn, $result_usuario);  
+$result_utilizador="INSERT INTO trabalho (assunto, descricao,valor,utilizador,categoria) VALUES('$assunto','$descricao','$valor','$user','$categoria')";
+$resultado_utilizador = mysqli_query($conn, $result_utilizador);  
 
 
 if(mysqli_insert_id($conn)){

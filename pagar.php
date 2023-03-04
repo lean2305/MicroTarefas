@@ -23,9 +23,9 @@ if((!isset($_SESSION['user']) == true) and (!isset($_SESSION['Senha']) == true))
 
 $logado =$_SESSION['user'];
 
-$usuario = "SELECT * FROM form where usuario = '$logado' ";//buscar nome usuario logado
+$utilizador = "SELECT * FROM form where utilizador = '$logado' ";//buscar nome utilizador logado
 
-$saldo = "SELECT * FROM form  ";//buscar nome usuario logado
+$saldo = "SELECT * FROM form  ";//buscar nome utilizador logado
 $resultado_saldoo = mysqli_query($conn, $saldo);
 
 
@@ -69,8 +69,8 @@ $empregadorr = $reg['empregador'] ;
 $provas = $reg['provas'] ;
 
 
-$result_saldooo= "  UPDATE form SET saldo = saldo - '$valorr' WHERE usuario= '$empregadorr';";
-$result_saldo= "  UPDATE form SET saldo = saldo + '$valorr' WHERE usuario='$trabalhadorr';";
+$result_saldooo= "  UPDATE form SET saldo = saldo - '$valorr' WHERE utilizador= '$empregadorr';";
+$result_saldo= "  UPDATE form SET saldo = saldo + '$valorr' WHERE utilizador='$trabalhadorr';";
 $apagar = "DELETE FROM provas WHERE id_prova='$id'";
 
  

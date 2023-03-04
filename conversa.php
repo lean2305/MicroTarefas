@@ -26,7 +26,7 @@ $logado == '$logado';
 $id_amigo = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
 
-//usuario1
+//utilizador1
 
 $form = "SELECT * FROM menssagem where id_amigo= '$id_amigo' AND user1 ='$logado' ";
 
@@ -53,10 +53,10 @@ if($ress=mysqli_query($conn,$form)){
 
     }
 }
-// Fim usuario1
+// Fim utilizador1
 
 
-//usuario2
+//utilizador2
 
 
 
@@ -84,7 +84,7 @@ if($ress=mysqli_query($conn,$formm)){
 
     }}
 
-//Fim usuario2
+//Fim utilizador2
 header("Location: chat.php");
 
 

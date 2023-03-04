@@ -27,13 +27,13 @@ $amigo =  addslashes($_POST["amigo"]);
 
 
 
-$query = mysqli_query($conn,"SELECT * FROM form WHERE usuario ='$amigo'");
+$query = mysqli_query($conn,"SELECT * FROM form WHERE utilizador ='$amigo'");
 $nr = mysqli_num_rows($query);
 
 
 
 
-$verifica = "SELECT * FROM amigos WHERE usuario ='$logado'";
+$verifica = "SELECT * FROM amigos WHERE utilizador ='$logado'";
 
 
 if($ress=mysqli_query($conn,$verifica)){
@@ -70,7 +70,7 @@ if($amigo != $logado){
     if($nr == 1)
     {
     
-        $novo_amigo="INSERT INTO amigos (usuario, amigo) VALUES('$logado','$amigo')";
+        $novo_amigo="INSERT INTO amigos (utilizador, amigo) VALUES('$logado','$amigo')";
         $resultado_novo_amigo = mysqli_query($conn, $novo_amigo);
     
         $_SESSION['msg'] = "<p style='color:green;'>Adicionado com sucesso</p>";
@@ -86,7 +86,7 @@ if($amigo != $logado){
         header("Location: chat.php");
     
     
-      // echo "Usuario não existe.";
+      // echo "utilizador não existe.";
     
     }
     
@@ -100,7 +100,7 @@ else
         header("Location: chat.php");
     
     
-      // echo "Usuario não existe.";
+      // echo "utilizador não existe.";
     
     }
 

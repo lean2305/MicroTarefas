@@ -23,18 +23,18 @@ if((!isset($_SESSION['user']) == true) and (!isset($_SESSION['Senha']) == true))
 
 $logado =$_SESSION['user'];
 
-$usuario = "SELECT * FROM trabalho where usuario = '$logado' ";//buscar nome usuario logado
+$utilizador = "SELECT * FROM trabalho where utilizador = '$logado' ";//buscar nome utilizador logado
 
 $arquivo = $_FILES['arquivo']['name'];
 
 //vai remover a foto de perfil anterior
-$sqlSelect = "SELECT *  FROM trabalho WHERE  usuario = '$logado'";
+$sqlSelect = "SELECT *  FROM trabalho WHERE  utilizador = '$logado'";
 
 $result = $conn->query($sqlSelect);
 
 if($result->num_rows > 0)
 {
-    $sqlDelete = "DELETE  FROM trabalho WHERE usuario = '$logado'";
+    $sqlDelete = "DELETE  FROM trabalho WHERE utilizador = '$logado'";
     $resultDelete = $conn->query($sqlDelete);
 }
 //fim de remoção de imagem de perfil

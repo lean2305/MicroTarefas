@@ -21,17 +21,17 @@ if((!isset($_SESSION['user']) == true) and (!isset($_SESSION['Senha']) == true))
 
 $logado =$_SESSION['user'];
 
-$user = $_SESSION['user'];//vai buscar o nome de usuario da sessao 
+$user = $_SESSION['user'];//vai buscar o nome de utilizador da sessao 
 //
 $id = filter_input(INPUT_POST,'assunto', FILTER_SANITIZE_STRING);
 $justificacao = filter_input(INPUT_POST,'w3review', FILTER_SANITIZE_STRING);
 
 
 
-$result_usuario="INSERT INTO report (id_historico,justificacao) VALUES('$id','$justificacao')";
+$result_utilizador="INSERT INTO report (id_historico,justificacao) VALUES('$id','$justificacao')";
 
 
-$resultado_usuario = mysqli_query($conn, $result_usuario);
+$resultado_utilizador = mysqli_query($conn, $result_utilizador);
 
 
 if(mysqli_insert_id($conn)){

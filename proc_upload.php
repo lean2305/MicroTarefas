@@ -23,18 +23,18 @@ if((!isset($_SESSION['user']) == true) and (!isset($_SESSION['Senha']) == true))
 
 $logado =$_SESSION['user'];
 
-$usuario = "SELECT * FROM form where usuario = '$logado' ";//buscar nome usuario logado
+$utilizador = "SELECT * FROM form where utilizador = '$logado' ";//buscar nome utilizador logado
 
 $arquivo = $_FILES['arquivo']['name'];
 
 //vai remover a foto de perfil anterior
-$sqlSelect = "SELECT *  FROM arquivo WHERE  usuario = '$logado'";
+$sqlSelect = "SELECT *  FROM arquivo WHERE  utilizador = '$logado'";
 
 $result = $conn->query($sqlSelect);
 
 if($result->num_rows > 0)
 {
-    $sqlDelete = "DELETE  FROM arquivo WHERE usuario = '$logado'";
+    $sqlDelete = "DELETE  FROM arquivo WHERE utilizador = '$logado'";
     $resultDelete = $conn->query($sqlDelete);
 }
 //fim de remoção de imagem de perfil
@@ -107,7 +107,7 @@ $_UP['pasta'] = 'foto/';
             //Upload efetuado com sucesso, exibe a mensagem
 
             $query = mysqli_query($conn, "INSERT INTO arquivo (
-            nome,usuario) VALUES('$nome_final','$logado')");
+            nome,utilizador) VALUES('$nome_final','$logado')");
            
             echo "
                 <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/pap/perfil.php'>

@@ -31,7 +31,7 @@ $saldo = mysqli_query($conn,"SELECT * FROM form");//saldo
 
 
 
-$form = "SELECT * FROM form where usuario = '$logado' ";//buscar tudo na tabela form onde for igual a sessão da pessoa
+$form = "SELECT * FROM form where utilizador = '$logado' ";//buscar tudo na tabela form onde for igual a sessão da pessoa
 if($ress=mysqli_query($conn,$form)){
   
 
@@ -46,7 +46,7 @@ if($ress=mysqli_query($conn,$form)){
      
 //fim da pesquisa saldo saldo
 
-$sql  ="SELECT * from arquivo where usuario = '$logado' ";
+$sql  ="SELECT * from arquivo where utilizador = '$logado' ";
 $resultado = $conn->query($sql);
 
 while ($linha = mysqli_fetch_array($resultado)){
@@ -167,7 +167,7 @@ while ($linha = mysqli_fetch_array($resultado)){
       <div class="subtitle">Trabalho(s) ativo(s)</div>
       <div class="subtitle-count dist"><?php 
       
-      $query= "SELECT id_trabalho from trabalho where usuario = '$logado'";
+      $query= "SELECT id_trabalho from trabalho where utilizador = '$logado'";
       $query_run = mysqli_query($conn,$query);
 
       $row = mysqli_num_rows($query_run);

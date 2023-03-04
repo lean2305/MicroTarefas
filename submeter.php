@@ -19,7 +19,7 @@ if((!isset($_SESSION['user']) == true) and (!isset($_SESSION['Senha']) == true))
 }
 
 
-//Obter nome do usuario da sessao 
+//Obter nome do utilizador da sessao 
 $logado =$_SESSION['user'];
 
 
@@ -30,7 +30,7 @@ $valor = filter_input(INPUT_POST,'valor', FILTER_SANITIZE_STRING);
 
 
 
-$verifica = "SELECT * FROM trabalho WHERE usuario='$empregador'";
+$verifica = "SELECT * FROM trabalho WHERE utilizador='$empregador'";
 
 //Conecta com a sessão para obter o saldo para exibir
 if($ress=mysqli_query($conn,$verifica)){
@@ -51,10 +51,10 @@ if($ress=mysqli_query($conn,$verifica)){
           
 
             //Evento pagamento caso não verificado
-            $event= "CREATE EVENT $logado$empregador ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 10080 MINUTE ON COMPLETION NOT PRESERVE DO UPDATE form SET saldo = saldo + $valor WHERE usuario='$logado';" ;
+            $event= "CREATE EVENT $logado$empregador ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 10080 MINUTE ON COMPLETION NOT PRESERVE DO UPDATE form SET saldo = saldo + $valor WHERE utilizador='$logado';" ;
             $CONNT = mysqli_query($conn, $event);
 
-            $events= "CREATE EVENT $empregador ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 10080 MINUTE ON COMPLETION NOT PRESERVE DO UPDATE form SET saldo = saldo - $valor WHERE usuario='$empregador';";
+            $events= "CREATE EVENT $empregador ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 10080 MINUTE ON COMPLETION NOT PRESERVE DO UPDATE form SET saldo = saldo - $valor WHERE utilizador='$empregador';";
             $CONNTs = mysqli_query($conn, $events);
 
             $eventi= "CREATE EVENT $empregador$logado$empregador ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 10080 MINUTE ON COMPLETION NOT PRESERVE DO DELETE FROM provas WHERE trabalhador='$logado';";
@@ -135,8 +135,8 @@ if(move_uploaded_file($_FILES['arquivo']['tmp_name'], $_UP['pasta']. $nome_final
 //Upload efetuado com sucesso, exibe a mensagem
 
 
-  $result_usuario="INSERT INTO provas (empregador,provas,trabalhador,valor,estado,print) VALUES('$empregador','$provas','$logado','$valor','pendente','$nome_final')";
-  $resultado_usuario = mysqli_query($conn, $result_usuario);
+  $result_utilizador="INSERT INTO provas (empregador,provas,trabalhador,valor,estado,print) VALUES('$empregador','$provas','$logado','$valor','pendente','$nome_final')";
+  $resultado_utilizador = mysqli_query($conn, $result_utilizador);
 
 
 

@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `amigos` (
   `id_amigo` int(11) NOT NULL,
-  `usuario` varchar(150) NOT NULL,
+  `utilizador` varchar(150) NOT NULL,
   `amigo` varchar(150) NOT NULL,
   `estado` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -38,7 +38,7 @@ CREATE TABLE `amigos` (
 -- Extraindo dados da tabela `amigos`
 --
 
-INSERT INTO `amigos` (`id_amigo`, `usuario`, `amigo`, `estado`) VALUES
+INSERT INTO `amigos` (`id_amigo`, `utilizador`, `amigo`, `estado`) VALUES
 (67, 'admin', 'JonaSilva', ''),
 (68, 'admin', 'aaaaaa', ''),
 (69, 'admin', 'sdfsdsads', '');
@@ -51,7 +51,7 @@ INSERT INTO `amigos` (`id_amigo`, `usuario`, `amigo`, `estado`) VALUES
 
 CREATE TABLE `arquivo` (
   `id` int(11) NOT NULL,
-  `usuario` varchar(150) NOT NULL,
+  `utilizador` varchar(150) NOT NULL,
   `nome` varchar(220) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -59,7 +59,7 @@ CREATE TABLE `arquivo` (
 -- Extraindo dados da tabela `arquivo`
 --
 
-INSERT INTO `arquivo` (`id`, `usuario`, `nome`) VALUES
+INSERT INTO `arquivo` (`id`, `utilizador`, `nome`) VALUES
 (31, 'leandro', 'download.jpg'),
 (46, 'sdfsdsads', 'download.png'),
 (49, 'JonaSilva', 'download.png'),
@@ -75,7 +75,7 @@ INSERT INTO `arquivo` (`id`, `usuario`, `nome`) VALUES
 CREATE TABLE `form` (
   `nome` varchar(20) NOT NULL,
   `sobrenome` varchar(20) NOT NULL,
-  `usuario` varchar(20) NOT NULL,
+  `utilizador` varchar(20) NOT NULL,
   `password` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `saldo` float NOT NULL,
   `arquivo` varchar(150) NOT NULL
@@ -85,7 +85,7 @@ CREATE TABLE `form` (
 -- Extraindo dados da tabela `form`
 --
 
-INSERT INTO `form` (`nome`, `sobrenome`, `usuario`, `password`, `saldo`, `arquivo`) VALUES
+INSERT INTO `form` (`nome`, `sobrenome`, `utilizador`, `password`, `saldo`, `arquivo`) VALUES
 ('Lean', 'oliv', '23', '23', 5.55, ''),
 ('aaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 0, ''),
 ('admin', 'admin', 'admin', 'admin', 11.75, ''),
@@ -221,14 +221,14 @@ CREATE TABLE `trabalho` (
   `assunto` varchar(35) NOT NULL,
   `descricao` varchar(350) NOT NULL,
   `valor` float NOT NULL,
-  `usuario` varchar(50) DEFAULT NULL
+  `utilizador` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `trabalho`
 --
 
-INSERT INTO `trabalho` (`id_trabalho`, `assunto`, `descricao`, `valor`, `usuario`) VALUES
+INSERT INTO `trabalho` (`id_trabalho`, `assunto`, `descricao`, `valor`, `utilizador`) VALUES
 (76, 'Seguir no instagram', 'Seguir minha conta instagram @leandro._.18', 0.05, 'leandro'),
 (82, 'Curtir facebook', 'Curtir pagina facebook\r\nhttps://www.facebook.com/', 0.02, 'jorge'),
 (97, 'Youtubes', 'Ver este video: https://www.youtube.com/watch?v=fb-uvasxfwo&ab_channel=BernardoAlmeida   e enviar print usando o lightshot as estatisticas nerd', 0.5, 'dssd'),
@@ -254,7 +254,7 @@ ALTER TABLE `arquivo`
 -- Índices para tabela `form`
 --
 ALTER TABLE `form`
-  ADD UNIQUE KEY `usuario` (`usuario`);
+  ADD UNIQUE KEY `utilizador` (`utilizador`);
 
 --
 -- Índices para tabela `historico_tarefa`
@@ -292,7 +292,7 @@ ALTER TABLE `report`
 ALTER TABLE `trabalho`
   ADD PRIMARY KEY (`id_trabalho`),
   ADD UNIQUE KEY `id_trabalho` (`id_trabalho`),
-  ADD UNIQUE KEY `usuario` (`usuario`);
+  ADD UNIQUE KEY `utilizador` (`utilizador`);
 
 --
 -- AUTO_INCREMENT de tabelas despejadas
@@ -350,9 +350,9 @@ DELIMITER $$
 --
 -- Eventos
 --
-CREATE DEFINER=`root`@`localhost` EVENT `adminleandro` ON SCHEDULE AT '2022-10-27 19:16:39' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE form SET saldo = saldo + 0.05 WHERE usuario='admin'$$
+CREATE DEFINER=`root`@`localhost` EVENT `adminleandro` ON SCHEDULE AT '2022-10-27 19:16:39' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE form SET saldo = saldo + 0.05 WHERE utilizador='admin'$$
 
-CREATE DEFINER=`root`@`localhost` EVENT `leandro` ON SCHEDULE AT '2022-10-27 19:16:39' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE form SET saldo = saldo - 0.05 WHERE usuario='leandro'$$
+CREATE DEFINER=`root`@`localhost` EVENT `leandro` ON SCHEDULE AT '2022-10-27 19:16:39' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE form SET saldo = saldo - 0.05 WHERE utilizador='leandro'$$
 
 CREATE DEFINER=`root`@`localhost` EVENT `leandroadminleandro` ON SCHEDULE AT '2022-10-27 19:16:39' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM provas WHERE trabalhador='admin'$$
 

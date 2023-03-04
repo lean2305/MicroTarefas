@@ -18,7 +18,7 @@ if((!isset($_SESSION['user']) == true) and (!isset($_SESSION['Senha']) == true))
     header('Location: login.php');
 }
 
-//Buscar o nome do usuario da sessao 
+//Buscar o nome do utilizador da sessao 
 $logado =$_SESSION['user'];
 
 
@@ -36,7 +36,7 @@ $saldo = mysqli_query($conn,"SELECT * FROM form");//
 
 
 //buscar tudo na tabela form onde for igual a sessão da pessoa
-$form = "SELECT * FROM form where usuario = '$logado' ";
+$form = "SELECT * FROM form where utilizador = '$logado' ";
 
 //Conecta com a sessão para obter o saldo para exibir
 if($ress=mysqli_query($conn,$form)){
@@ -68,7 +68,7 @@ if($ress=mysqli_query($conn,$form)){
 </head>
 <body>
 
-<!-- Header contendo botões, saldo e nome do usuario -->
+<!-- Header contendo botões, saldo e nome do utilizador -->
 <div class="wrapper">
  <div class="left-side">
  <svg xmlns="http://www.w3.org/2000/svg" onclick="parent.location='perfil.php'" width="20" height="20" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
@@ -224,7 +224,7 @@ if($res=mysqli_query($conn,$sqlo)){
   
       $trblh_asunto[$iol] = $reg['assunto'] ;  //buscar dados na tabela trabalho coluna assunto
       $trblh_valor[$iol] = $reg['valor'] ;  //buscar dados na tabela trabalho coluna valor
-      $trblh_user[$iol] = $reg['usuario'] ;  //buscar nome da pessoa que inseriu o trabalho
+      $trblh_user[$iol] = $reg['utilizador'] ;  //buscar nome da pessoa que inseriu o trabalho
       $trblh_descricao[$iol] = $reg['descricao'] ;  //buscar descrição da pessoa que inseriu o trabalho
       $id_trabalho[$iol] = $reg['id_trabalho']; // buscar o id do trabalho
     

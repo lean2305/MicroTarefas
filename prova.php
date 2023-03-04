@@ -32,7 +32,7 @@ $saldo = mysqli_query($conn,"SELECT * FROM form");//
 
 
 
-$form = "SELECT * FROM form where usuario = '$logado' ";//buscar tudo na tabela form onde for igual a sessão da pessoa
+$form = "SELECT * FROM form where utilizador = '$logado' ";//buscar tudo na tabela form onde for igual a sessão da pessoa
 if($ress=mysqli_query($conn,$form)){
   
 
@@ -183,8 +183,8 @@ if($ress=mysqli_query($conn,$form)){
 		
 
     $sql = "SELECT * FROM provas Where empregador =  '$logado'";//buscar tudo na tabela trabalho
-		$result_usuarios = "SELECT * FROM provas Where empregador =  '$logado' LIMIT $inicio, $qnt_result_pg";
-		$resultado_usuarios = mysqli_query($conn, $result_usuarios);
+		$result_utilizadors = "SELECT * FROM provas Where empregador =  '$logado' LIMIT $inicio, $qnt_result_pg";
+		$resultado_utilizadors = mysqli_query($conn, $result_utilizadors);
     if($res=mysqli_query($conn,$sql)){
   
 
@@ -195,11 +195,11 @@ if($ress=mysqli_query($conn,$form)){
       $iol = 0;
 		
     while($reg=mysqli_fetch_assoc($res)){     
-			//echo " ID: " . $row_usuario['id_prova'] . "<br>";
-			//echo "Empregador: " . $row_usuario['empregador'] . "<br>";
-			//echo "provas: " . $row_usuario['provas'] . "<br>";
-            //echo "Trabalhador: " . $row_usuario['trabalhador'] . "<br>";
-            //echo "Valor: " . $row_usuario['valor'] . "<br>";
+			//echo " ID: " . $row_utilizador['id_prova'] . "<br>";
+			//echo "Empregador: " . $row_utilizador['empregador'] . "<br>";
+			//echo "provas: " . $row_utilizador['provas'] . "<br>";
+            //echo "Trabalhador: " . $row_utilizador['trabalhador'] . "<br>";
+            //echo "Valor: " . $row_utilizador['valor'] . "<br>";
             
       $trblh_empregador[$iol] = $reg['empregador'] ;  //buscar dados na tabela trabalho coluna assunto
       $trblh_provas[$iol] = $reg['provas'] ;  //buscar dados na tabela trabalho coluna valor
@@ -207,8 +207,8 @@ if($ress=mysqli_query($conn,$form)){
       $trblh_valor[$iol] = $reg['valor'] ;  //buscar descrição da pessoa que inseriu o trabalho
          
 		
-      //echo "<a href='pagar.php?id=" . $row_usuario['id_prova'] . "'>Pagar</a><br>";
-		//	echo "<a href='recusar.php?id=" . $row_usuario['id_prova'] . "'>Recusar</a><br><hr>";
+      //echo "<a href='pagar.php?id=" . $row_utilizador['id_prova'] . "'>Pagar</a><br>";
+		//	echo "<a href='recusar.php?id=" . $row_utilizador['id_prova'] . "'>Recusar</a><br><hr>";
 		
   
 		

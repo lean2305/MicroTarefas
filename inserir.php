@@ -22,7 +22,7 @@ if((!isset($_SESSION['user']) == true) and (!isset($_SESSION['Senha']) == true))
 $logado =$_SESSION['user'];
 
 
-$form = "SELECT * FROM form where usuario = '$logado' ";//buscar tudo na tabela form onde for igual a sessão da pessoa
+$form = "SELECT * FROM form where utilizador = '$logado' ";//buscar tudo na tabela form onde for igual a sessão da pessoa
 if($ress=mysqli_query($conn,$form)){
   
 

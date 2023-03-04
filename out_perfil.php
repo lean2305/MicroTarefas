@@ -56,7 +56,7 @@ $sql = "SELECT * FROM historico_tarefa where id='$id' ";//buscar tudo na tabela 
 
 
 
-    $form = "SELECT * FROM form where usuario = '$logado' ";
+    $form = "SELECT * FROM form where utilizador = '$logado' ";
 
 //Conecta com a sessão para obter o saldo para exibir
 if($ress=mysqli_query($conn,$form)){
@@ -73,7 +73,7 @@ if($ress=mysqli_query($conn,$form)){
         
 
 
-$sql  ="SELECT * from arquivo where usuario = '$empregador[$iol]' ";
+$sql  ="SELECT * from arquivo where utilizador = '$empregador[$iol]' ";
 $resultado = $conn->query($sql);
     
 while ($linha = mysqli_fetch_array($resultado)){
@@ -193,7 +193,7 @@ while ($linha = mysqli_fetch_array($resultado)){
       <div class="subtitle">Trabalho(s) ativo(s)</div>
       <div class="subtitle-count dist"><?php 
       
-      $query= "SELECT id_trabalho from trabalho where usuario = '$empregador[$iol]'";
+      $query= "SELECT id_trabalho from trabalho where utilizador = '$empregador[$iol]'";
       $query_run = mysqli_query($conn,$query);
 
       $row = mysqli_num_rows($query_run);
