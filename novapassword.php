@@ -27,14 +27,14 @@ $logado == '$logado';
 $atual =  addslashes($_POST["atual"]);
 $nova = addslashes($_POST["nova"]);
 
-$query = mysqli_query($conn,"SELECT * FROM form WHERE utilizador = '".$logado." ' and password = '".$atual."' ");
+$query = mysqli_query($conn,"SELECT * FROM utilizador WHERE utilizador = '".$logado." ' and password = '".$atual."' ");
 $nr = mysqli_num_rows($query);
 
 
 if($nr == 1)
 {
 
-    $result_password = "UPDATE form SET password='$nova' WHERE utilizador='$logado'";
+    $result_password = "UPDATE utilizador SET password='$nova' WHERE utilizador='$logado'";
     $resultpass = $conn->query($result_password);
     header("Location: novapassword.php");
 

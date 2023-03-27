@@ -29,18 +29,18 @@ $assunto = mysqli_query($conn,"SELECT assunto FROM trabalho ");
 //Buscar dados da tabela provas
 $dado = mysqli_query($conn,"SELECT * FROM provas");
 
-//Buscar dados da tabela form
-$saldo = mysqli_query($conn,"SELECT * FROM form");//
+//Buscar dados da tabela utilizador
+$saldo = mysqli_query($conn,"SELECT * FROM utilizador");//
 
 //Buscar categoria
 $categoria = filter_input(INPUT_POST,'select', FILTER_SANITIZE_STRING);
 
 
-//buscar tudo na tabela form onde for igual a sessão da pessoa
-$form = "SELECT * FROM form where utilizador = '$logado' ";
+//buscar tudo na tabela utilizador onde for igual a sessão da pessoa
+$utilizador = "SELECT * FROM utilizador where utilizador = '$logado' ";
 
 //Conecta com a sessão para obter o saldo para exibir
-if($ress=mysqli_query($conn,$form)){
+if($ress=mysqli_query($conn,$utilizador)){
   
 
     $valor_saldo = array();
@@ -49,7 +49,7 @@ if($ress=mysqli_query($conn,$form)){
     
     while($regg=mysqli_fetch_assoc($ress)){
 
-        //buscar dados na form  coluna saldo
+        //buscar dados na utilizador  coluna saldo
         $valor_saldo[$ioll] = $regg['saldo'] ;  
         
      

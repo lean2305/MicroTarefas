@@ -31,9 +31,9 @@ $logado =$_SESSION['user'];
 
 $dado = mysqli_query($conn,"SELECT * FROM provas");
 
-$saldo = mysqli_query($conn,"SELECT * FROM form");//saldo
+$saldo = mysqli_query($conn,"SELECT * FROM utilizador");//saldo
 
-$sql = "SELECT * FROM historico_tarefa where id='$id' ";//buscar tudo na tabela historico
+$sql = "SELECT * FROM historico_trabalho where id='$id' ";//buscar tudo na tabela historico
 
 
 
@@ -56,10 +56,10 @@ $sql = "SELECT * FROM historico_tarefa where id='$id' ";//buscar tudo na tabela 
 
 
 
-    $form = "SELECT * FROM form where utilizador = '$logado' ";
+    $utilizador = "SELECT * FROM utilizador where utilizador = '$logado' ";
 
 //Conecta com a sessão para obter o saldo para exibir
-if($ress=mysqli_query($conn,$form)){
+if($ress=mysqli_query($conn,$utilizador)){
   
 
     $valor_saldo = array();
@@ -68,7 +68,7 @@ if($ress=mysqli_query($conn,$form)){
     
     while($regg=mysqli_fetch_assoc($ress)){
 
-        //buscar dados na form  coluna saldo
+        //buscar dados na utilizador  coluna saldo
         $valor_saldo[$ioll] = $regg['saldo'] ;  
         
 
@@ -205,7 +205,7 @@ while ($linha = mysqli_fetch_array($resultado)){
       <div class="subtitle">Verificados</div>
       <?php 
       
-      $query= "SELECT id from historico_tarefa where trabalhador = '$empregador[$iol]'";
+      $query= "SELECT id from historico_trabalho where trabalhador = '$empregador[$iol]'";
       $query_run = mysqli_query($conn,$query);
 
       $row = mysqli_num_rows($query_run);
@@ -302,7 +302,7 @@ while ($linha = mysqli_fetch_array($resultado)){
       
       <div class="subtitle-count"><?php 
       
-      $query= "SELECT id from historico_tarefa where trabalhador = '$empregador[$iol]' and  estado = 'pago'";
+      $query= "SELECT id from historico_trabalho where trabalhador = '$empregador[$iol]' and  estado = 'pago'";
       $query_run = mysqli_query($conn,$query);
 
       $row = mysqli_num_rows($query_run);
@@ -314,7 +314,7 @@ while ($linha = mysqli_fetch_array($resultado)){
       <div class="subtitle">Recusados</div>
       <div class="subtitle-count dist"><?php 
       
-      $query= "SELECT id from historico_tarefa where trabalhador = '$empregador[$iol]' and  estado = 'recusado'";
+      $query= "SELECT id from historico_trabalho where trabalhador = '$empregador[$iol]' and  estado = 'recusado'";
       $query_run = mysqli_query($conn,$query);
 
       $row = mysqli_num_rows($query_run);

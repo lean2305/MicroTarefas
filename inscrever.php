@@ -20,7 +20,7 @@ $snome = addslashes(filter_input(INPUT_POST,'snome', FILTER_SANITIZE_STRING));
 
 //echo "Nome: $nome <br>";
 
-$result_utilizador="INSERT INTO form (utilizador, password,nome,sobrenome) VALUES('$nome','$senha','$pnome','$snome')";
+$result_utilizador="INSERT INTO utilizador (utilizador, password,nome,sobrenome) VALUES('$nome','$senha','$pnome','$snome')";
 
 $resultado_utilizador = mysqli_query($conn, $result_utilizador);
 

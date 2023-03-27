@@ -28,10 +28,10 @@ $id_amigo = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
 //utilizador1
 
-$form = "SELECT * FROM menssagem where id_amigo= '$id_amigo' AND user1 ='$logado' ";
+$utilizador = "SELECT * FROM menssagem where id_amigo= '$id_amigo' AND user1 ='$logado' ";
 
 
-if($ress=mysqli_query($conn,$form)){
+if($ress=mysqli_query($conn,$utilizador)){
   
 
     $valor_saldo = array();
@@ -61,10 +61,10 @@ if($ress=mysqli_query($conn,$form)){
 
 
 
-$formm = "SELECT * FROM menssagem where id_amigo= '$id_amigo' AND user2 ='$logado'";
+$utilizadorm = "SELECT * FROM menssagem where id_amigo= '$id_amigo' AND user2 ='$logado'";
     
 
-if($ress=mysqli_query($conn,$formm)){
+if($ress=mysqli_query($conn,$utilizadorm)){
   
 
     $valor_saldoo = array();

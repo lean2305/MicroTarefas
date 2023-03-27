@@ -23,9 +23,9 @@ if((!isset($_SESSION['user']) == true) and (!isset($_SESSION['Senha']) == true))
 
 $logado =$_SESSION['user'];
 
-$utilizador = "SELECT * FROM form where utilizador = '$logado' ";//buscar nome utilizador logado
+$utilizador = "SELECT * FROM utilizador where utilizador = '$logado' ";//buscar nome utilizador logado
 
-$saldo = "SELECT * FROM form  ";//buscar nome utilizador logado
+$saldo = "SELECT * FROM utilizador  ";//buscar nome utilizador logado
 $resultado_saldoo = mysqli_query($conn, $saldo);
 
 
@@ -69,15 +69,15 @@ $empregadorr = $reg['empregador'] ;
 $provas = $reg['provas'] ;
 
 
-$result_saldooo= "  UPDATE form SET saldo = saldo - '$valorr' WHERE utilizador= '$empregadorr';";
-$result_saldo= "  UPDATE form SET saldo = saldo + '$valorr' WHERE utilizador='$trabalhadorr';";
+$result_saldooo= "  UPDATE utilizador SET saldo = saldo - '$valorr' WHERE utilizador= '$empregadorr';";
+$result_saldo= "  UPDATE utilizador SET saldo = saldo + '$valorr' WHERE utilizador='$trabalhadorr';";
 $apagar = "DELETE FROM provas WHERE id_prova='$id'";
 
  
 //ideia:criar uma tabela na base dados para registrar os que foram pagos
 
 
-$result_historico="INSERT INTO historico_tarefa (empregador, trabalhador,valor,estado,prova) VALUES('$empregadorr','$trabalhadorr','$valorr','pago','$provas')";
+$result_historico="INSERT INTO historico_trabalho (empregador, trabalhador,valor,estado,prova) VALUES('$empregadorr','$trabalhadorr','$valorr','pago','$provas')";
 
 if(!empty($id)){
 

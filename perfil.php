@@ -24,15 +24,15 @@ $logado =$_SESSION['user'];
 
 $dado = mysqli_query($conn,"SELECT * FROM provas");
 
-$saldo = mysqli_query($conn,"SELECT * FROM form");//saldo
+$saldo = mysqli_query($conn,"SELECT * FROM utilizador");//saldo
 
 
 
 
 
 
-$form = "SELECT * FROM form where utilizador = '$logado' ";//buscar tudo na tabela form onde for igual a sessão da pessoa
-if($ress=mysqli_query($conn,$form)){
+$utilizador = "SELECT * FROM utilizador where utilizador = '$logado' ";//buscar tudo na tabela utilizador onde for igual a sessão da pessoa
+if($ress=mysqli_query($conn,$utilizador)){
   
 
     $valor_saldo = array();
@@ -41,7 +41,7 @@ if($ress=mysqli_query($conn,$form)){
     
     while($regg=mysqli_fetch_assoc($ress)){
     
-        $valor_saldo[$ioll] = $regg['saldo'] ;  //buscar dados na form  coluna saldo
+        $valor_saldo[$ioll] = $regg['saldo'] ;  //buscar dados na utilizador  coluna saldo
         
      
 //fim da pesquisa saldo saldo
@@ -179,7 +179,7 @@ while ($linha = mysqli_fetch_array($resultado)){
       <div class="subtitle">Verificados</div>
       <?php 
       
-      $query= "SELECT id from historico_tarefa where trabalhador = '$logado'";
+      $query= "SELECT id from historico_trabalho where trabalhador = '$logado'";
       $query_run = mysqli_query($conn,$query);
 
       $row = mysqli_num_rows($query_run);
@@ -266,7 +266,7 @@ while ($linha = mysqli_fetch_array($resultado)){
       
       <div class="subtitle-count"><?php 
       
-      $query= "SELECT id from historico_tarefa where trabalhador = '$logado' and  estado = 'pago'";
+      $query= "SELECT id from historico_trabalho where trabalhador = '$logado' and  estado = 'pago'";
       $query_run = mysqli_query($conn,$query);
 
       $row = mysqli_num_rows($query_run);
@@ -278,7 +278,7 @@ while ($linha = mysqli_fetch_array($resultado)){
       <div class="subtitle">Recusados</div>
       <div class="subtitle-count dist"><?php 
       
-      $query= "SELECT id from historico_tarefa where trabalhador = '$logado' and  estado = 'recusado'";
+      $query= "SELECT id from historico_trabalho where trabalhador = '$logado' and  estado = 'recusado'";
       $query_run = mysqli_query($conn,$query);
 
       $row = mysqli_num_rows($query_run);

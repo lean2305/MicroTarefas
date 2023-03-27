@@ -358,16 +358,16 @@ body[data-theme=dark] {
 
 .list-header-arrow {
   margin-left: auto;
-  transform: rotate(180deg);
+  transutilizador: rotate(180deg);
   transition: 0.2s ease;
 }
 .chat-list-header.active .list-header-arrow {
-  transform: rotate(0deg);
+  transutilizador: rotate(0deg);
 }
 
 .app-main {
   flex: 3;
-  height: 100%;
+  height: 90%;
   background-color: var(--box-color);
   border-radius: 10px;
   padding: 16px;
@@ -497,7 +497,7 @@ body[data-theme=dark] {
   font-size: 12px;
   line-height: 16px;
   width: auto;
-  max-width: 80%;
+  max-width: 100%;
   color: var(--text-dark);
 }
 .message-box-wrapper {
@@ -662,8 +662,8 @@ body[data-theme=dark] {
 }
 .day.current .chart {
   opacity: 1;
-  transform: scale(1.2);
-  transform-origin: bottom;
+  transutilizador: scale(1.2);
+  transutilizador-origin: bottom;
 }
 .day:first-child .chart {
   height: 20%;
@@ -790,7 +790,7 @@ body[data-theme=dark] {
 
 @media screen and (max-width: 1025px) {
   .app-left {
-    transform: translateX(-100%);
+    transutilizador: translateX(-100%);
     position: absolute;
     opacity: 0;
     top: 0;
@@ -800,7 +800,7 @@ body[data-theme=dark] {
     transition: all 300ms cubic-bezier(0.19, 1, 0.56, 1);
   }
   .app-left.open {
-    transform: translateX(0);
+    transutilizador: translateX(0);
     opacity: 1;
   }
 
@@ -810,7 +810,7 @@ body[data-theme=dark] {
 }
 @media screen and (max-width: 680px) {
   .app-right {
-    transform: translateX(100%);
+    transutilizador: translateX(100%);
     position: absolute;
     opacity: 0;
     top: 0;
@@ -820,7 +820,7 @@ body[data-theme=dark] {
     transition: all 300ms cubic-bezier(0.19, 1, 0.56, 1);
   }
   .app-right.open {
-    transform: translateX(0);
+    transutilizador: translateX(0);
     opacity: 1;
   }
 
@@ -838,3 +838,15 @@ body[data-theme=dark] {
   }
 }
 
+.container{
+  overflow: auto;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 25px;
+  overflow: none;
+  padding-left: 0;
+}

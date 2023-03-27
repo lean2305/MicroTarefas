@@ -17,7 +17,7 @@ if(!$conn)
 $nome =  addslashes($_POST["user"]);
 $senha = addslashes($_POST["Senha"]);
 
-$query = mysqli_query($conn,"SELECT * FROM form WHERE utilizador = '".$nome." ' and password = '".$senha."' ");
+$query = mysqli_query($conn,"SELECT * FROM utilizador WHERE utilizador = '".$nome." ' and password = '".$senha."' ");
 $nr = mysqli_num_rows($query);
 
 if($nr == 1)

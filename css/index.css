@@ -211,7 +211,7 @@ body{
 
 .price-box__wrap:hover {
   backface-visibility: hidden;
-  transform: scale(1.05, 1.05);
+  transutilizador: scale(1.05, 1.05);
   box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
 }
 
@@ -533,7 +533,7 @@ filter: drop-shadow(0px 7px 4px rgba(0,0,0,.2));
 }
 
 .partner_img:hover{    
-    transform: scale(1.08, 1.08);
+    transutilizador: scale(1.08, 1.08);
   opacity:0.9;
 }
 
@@ -647,14 +647,14 @@ left: 0;
   text-decoration:none;
 }
 
-.form-group {
+.utilizador-group {
     margin-bottom: 20px;
 display: table;
 width: 100%;
   position:relative;
 }
 
-.form__field {
+.utilizador__field {
     height: 50px;
   position:relative;
     border: none;
@@ -675,7 +675,7 @@ width: 100%;
   z-index: 2;
 }
 
-.form__select {
+.utilizador__select {
     background-image: url('http://www.austinlawrencepartners.com/wp-content/uploads/arrow-down-gray-hi.png');
     background-repeat: no-repeat;
     background-size: 10px;
@@ -687,17 +687,17 @@ width: 100%;
   color: #8198ae;
 }
 
-.form__field--half{
+.utilizador__field--half{
   width:50%;
   float:left;
 }
 
-.form__field--half:first-of-type{
+.utilizador__field--half:first-of-type{
   padding-right:15px;
 }
 
 
-.form__textarea{
+.utilizador__textarea{
   height:200px;
 }
 
@@ -849,19 +849,19 @@ vertical-align: middle;
     padding: 10px 10px;
     font-size: 16px;
 }
-  .form {
+  .utilizador {
     margin-top: 30px;
 }
-  .form__field--half:first-of-type {
+  .utilizador__field--half:first-of-type {
     margin-bottom: 10px;
     padding-right: 0px;
 }
 
-.form__field--half {
+.utilizador__field--half {
     width: 100%;
     float: none;
 }
-  .form-group {
+  .utilizador-group {
     margin-bottom: 10px;
   }
 }

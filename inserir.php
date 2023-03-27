@@ -22,8 +22,8 @@ if((!isset($_SESSION['user']) == true) and (!isset($_SESSION['Senha']) == true))
 $logado =$_SESSION['user'];
 
 
-$form = "SELECT * FROM form where utilizador = '$logado' ";//buscar tudo na tabela form onde for igual a sessão da pessoa
-if($ress=mysqli_query($conn,$form)){
+$utilizador = "SELECT * FROM utilizador where utilizador = '$logado' ";//buscar tudo na tabela utilizador onde for igual a sessão da pessoa
+if($ress=mysqli_query($conn,$utilizador)){
   
 
     $valor_saldo = array();
@@ -32,7 +32,7 @@ if($ress=mysqli_query($conn,$form)){
     
     while($regg=mysqli_fetch_assoc($ress)){
     
-        $valor_saldo[$ioll] = $regg['saldo'] ;  //buscar dados na form  coluna saldo
+        $valor_saldo[$ioll] = $regg['saldo'] ;  //buscar dados na utilizador  coluna saldo
         
 
 
@@ -116,7 +116,7 @@ if($ress=mysqli_query($conn,$form)){
      <form  method="POST" action="inserirr.php"  >
 
 <center>
-<div  class="form">
+<div  class="utilizador">
     <h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Inserir trabalho</h1>
 
     <input  class="activity card" style="color:white;" type="text" id="assunto" name="assunto" placeholder="Assunto"><br>

@@ -27,7 +27,7 @@ $amigo =  addslashes($_POST["amigo"]);
 
 
 
-$query = mysqli_query($conn,"SELECT * FROM form WHERE utilizador ='$amigo'");
+$query = mysqli_query($conn,"SELECT * FROM utilizador WHERE utilizador ='$amigo'");
 $nr = mysqli_num_rows($query);
 
 
@@ -46,7 +46,7 @@ if($ress=mysqli_query($conn,$verifica)){
     
     while($regg=mysqli_fetch_assoc($ress)){
 
-        //buscar dados na form  coluna saldo
+        //buscar dados na utilizador  coluna saldo
         $pedido_verifica[$ioll] = $regg['amigo'] ;  
 
         if($pedido_verifica[$ioll] == $amigo){

@@ -29,15 +29,15 @@ $assunto = mysqli_query($conn,"SELECT assunto FROM trabalho ");
 
 $dado = mysqli_query($conn,"SELECT * FROM provas");
 
-$saldo = mysqli_query($conn,"SELECT * FROM form");//
+$saldo = mysqli_query($conn,"SELECT * FROM utilizador");//
 
 
 
 
 
 
-$form = "SELECT * FROM form where utilizador = '$logado' ";//buscar tudo na tabela form onde for igual a sessão da pessoa
-if($ress=mysqli_query($conn,$form)){
+$utilizador = "SELECT * FROM utilizador where utilizador = '$logado' ";//buscar tudo na tabela utilizador onde for igual a sessão da pessoa
+if($ress=mysqli_query($conn,$utilizador)){
   
 
     $valor_saldo = array();
@@ -46,7 +46,7 @@ if($ress=mysqli_query($conn,$form)){
     
     while($regg=mysqli_fetch_assoc($ress)){
     
-        $valor_saldo[$ioll] = $regg['saldo'] ;  //buscar dados na form  coluna saldo
+        $valor_saldo[$ioll] = $regg['saldo'] ;  //buscar dados na utilizador  coluna saldo
         
      
 
@@ -234,7 +234,7 @@ $iol =$iol +1;//adicionar +1 na variavel iol
     <form  method="POST" action="report.php" >
 
             <center>
-            <div class="form" style=" padding-left: 22px;">
+            <div class="utilizador" style=" padding-left: 22px;">
                 <h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Reportar tarefa</h1>
           
                 <input style="border-radius: 7px;color: white;background-color: #1a2049;border: 3px solid #1a2049;"  type="text" id="assunto" name="assunto" placeholder="Id"><br><br>
@@ -245,7 +245,7 @@ $iol =$iol +1;//adicionar +1 na variavel iol
                 <script>
                     
                     function countText() {
-                    let text = document.form_main.text.value;
+                    let text = document.utilizador_main.text.value;
                     document.getElementById('assunto').innerText = text.length;
        
                     }

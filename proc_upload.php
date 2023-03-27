@@ -23,7 +23,7 @@ if((!isset($_SESSION['user']) == true) and (!isset($_SESSION['Senha']) == true))
 
 $logado =$_SESSION['user'];
 
-$utilizador = "SELECT * FROM form where utilizador = '$logado' ";//buscar nome utilizador logado
+$utilizador = "SELECT * FROM utilizador where utilizador = '$logado' ";//buscar nome utilizador logado
 
 $arquivo = $_FILES['arquivo']['name'];
 

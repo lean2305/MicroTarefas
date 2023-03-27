@@ -182,7 +182,7 @@ table {
 }
 
 /*
-Forms
+utilizadors
 =====
 */
 
@@ -207,14 +207,14 @@ textarea {
 }
 
 /**
-Remove the inheritance of text transform in Edge and Firefox.
-1. Remove the inheritance of text transform in Firefox.
+Remove the inheritance of text transutilizador in Edge and Firefox.
+1. Remove the inheritance of text transutilizador in Firefox.
 */
 
 button,
 select {
   /* 1 */
-  text-transform: none;
+  text-transutilizador: none;
 }
 
 /**
@@ -247,7 +247,7 @@ Restore the focus styles unset by the previous rule.
 
 /**
 Remove the additional ':invalid' styles in Firefox.
-See: https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737
+See: https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/utilizadors.css#L728-L737
 */
 
 :-moz-ui-invalid {
@@ -518,7 +518,7 @@ a {
 }
 
 /**
- * Reset form element properties that are easy to forget to
+ * Reset utilizador element properties that are easy to forget to
  * style explicitly so you don't inadvertently introduce
  * styles that deviate from your design system. These styles
  * supplement a partial reset that is already applied by
@@ -609,7 +609,7 @@ video {
   --tw-skew-y: 0;
   --tw-scale-x: 1;
   --tw-scale-y: 1;
-  --tw-transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  --tw-transutilizador: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   --tw-border-opacity: 1;
   border-color: rgba(229, 231, 235, var(--tw-border-opacity));
   --tw-ring-offset-shadow: 0 0 #0000;
@@ -1144,17 +1144,17 @@ video {
 
 .am\[-50\%\]{
   --tw-translate-y: -50%;
-  transform: var(--tw-transform);
+  transutilizador: var(--tw-transutilizador);
 }
 
 .aZ{
   --tw-rotate: 45deg;
-  transform: var(--tw-transform);
+  transutilizador: var(--tw-transutilizador);
 }
 
 .a4e{
   --tw-rotate: 180deg;
-  transform: var(--tw-transform);
+  transutilizador: var(--tw-transutilizador);
 }
 
 .a1r{
@@ -1724,9 +1724,9 @@ video {
 }
 
 .a1p{
-  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transutilizador, filter, -webkit-backdrop-filter;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transutilizador, filter, backdrop-filter;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transutilizador, filter, backdrop-filter, -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -1753,9 +1753,9 @@ input[type="checkbox"]:checked ~ label span svg{
   --tw-bg-opacity: 1;
   background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
   --tw-bg-opacity: 0.8;
-  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transutilizador, filter, -webkit-backdrop-filter;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transutilizador, filter, backdrop-filter;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transutilizador, filter, backdrop-filter, -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -1795,8 +1795,8 @@ input[type="checkbox"]:checked ~ label span svg{
 .navbarTogglerActive > span:nth-child(1){
   top: 7px;
   --tw-rotate: 45deg;
-  transform: var(--tw-transform);
-  transform: var(--tw-transform);
+  transutilizador: var(--tw-transutilizador);
+  transutilizador: var(--tw-transutilizador);
 }
 
 .navbarTogglerActive > span:nth-child(2){
@@ -1806,12 +1806,12 @@ input[type="checkbox"]:checked ~ label span svg{
 .navbarTogglerActive > span:nth-child(3){
   top: -8px;
   --tw-rotate: 135deg;
-  transform: var(--tw-transform);
+  transutilizador: var(--tw-transutilizador);
 }
 
 input#togglePlan:checked ~ .dot{
   --tw-translate-x: 100%;
-  transform: var(--tw-transform);
+  transutilizador: var(--tw-transutilizador);
 }
 
 input#checkboxLabel:checked ~ .box span{
@@ -1851,13 +1851,13 @@ input#checkboxLabel:checked ~ .box span{
 .after\:am\[-50\%\]::after{
   content: "";
   --tw-translate-y: -50%;
-  transform: var(--tw-transform);
+  transutilizador: var(--tw-transutilizador);
 }
 
 .after\:aZ::after{
   content: "";
   --tw-rotate: 45deg;
-  transform: var(--tw-transform);
+  transutilizador: var(--tw-transutilizador);
 }
 
 .after\:aW::after{
@@ -2751,13 +2751,13 @@ h2.inte{
   justify-content: center;
   align-items: center;
   z-index: 1;
-  transform: translateY(100px);
+  transutilizador: translateY(100px);
   border-radius: 10px;
 }
 
 .container .card:hover .face.face1 {
   background: rgb(6, 107, 202);
-  transform: translateY(0);
+  transutilizador: translateY(0);
   
 }
 
@@ -2788,12 +2788,12 @@ h2.inte{
   padding: 20px;
   box-sizing: border-box;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-  transform: translateY(-100px);
+  transutilizador: translateY(-100px);
   
 }
 
 .container .card:hover .face.face2 {
-  transform: translateY(0);
+  transutilizador: translateY(0);
 }
 
 .container .card .face.face2 .content .svg1 {
@@ -2892,7 +2892,7 @@ h2.inte{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transutilizador: translate(-50%,-50%);
     width: 32px;
     height: 44px;
     border-radius: 50px;
@@ -2908,7 +2908,7 @@ h2.inte{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transutilizador: translate(-50%,-50%);
     display: block;
     z-index: 0;
     width: 80px;
@@ -2924,7 +2924,7 @@ h2.inte{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transutilizador: translate(-50%,-50%);
     display: block;
     z-index: 1;
     width: 80px;
@@ -2946,12 +2946,12 @@ h2.inte{
 
   @keyframes pulse {
     0%{
-      transform: translateX(-50%) translateY(-50%) translateZ(0) 
+      transutilizador: translateX(-50%) translateY(-50%) translateZ(0) 
       scale(1);
       opacity: 1;
     }
     100%{
-      transform: translateX(-50%) translateY(-50%) translateZ(0) 
+      transutilizador: translateX(-50%) translateY(-50%) translateZ(0) 
       scale(1.5);
       opacity: 0.5;
     }          
@@ -3018,7 +3018,7 @@ h2.inte{
       display: inline-block;
       padding: 7px;
       color: #2196f3;
-      text-transform: uppercase;
+      text-transutilizador: uppercase;
       overflow: hidden;
       transition: 0.2s;
   }

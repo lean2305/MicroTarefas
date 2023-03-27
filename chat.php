@@ -3,7 +3,6 @@
 
 session_start();
 
-
 $dbhost = "localhost";
 $dbuser = "root";
 $dbpass = "";
@@ -28,18 +27,18 @@ $assunto = mysqli_query($conn,"SELECT assunto FROM trabalho ");
 //Buscar dados da tabela provas
 $dado = mysqli_query($conn,"SELECT * FROM provas");
 
-//Buscar dados da tabela form
-$saldo = mysqli_query($conn,"SELECT * FROM form");//
+//Buscar dados da tabela utilizador
+$saldo = mysqli_query($conn,"SELECT * FROM utilizador");//
 
 
 
 
 
-//buscar tudo na tabela form onde for igual a sessão da pessoa
-$form = "SELECT * FROM form where utilizador = '$logado' ";
+//buscar tudo na tabela utilizador onde for igual a sessão da pessoa
+$utilizador = "SELECT * FROM utilizador where utilizador = '$logado' ";
 
 //Conecta com a sessão para obter o saldo para exibir
-if($ress=mysqli_query($conn,$form)){
+if($ress=mysqli_query($conn,$utilizador)){
   
 
     $valor_saldo = array();
@@ -48,7 +47,7 @@ if($ress=mysqli_query($conn,$form)){
     
     while($regg=mysqli_fetch_assoc($ress)){
 
-        //buscar dados na form  coluna saldo
+        //buscar dados na utilizador  coluna saldo
         $valor_saldo[$ioll] = $regg['saldo'] ;  
         
 
@@ -383,65 +382,24 @@ if($res=mysqli_query($conn,$sqli)){
   
   ?>
   <div class="app-main">
-    <div class="chat-wrapper">
+  <div class="container">
+ 
+		<div class="chatbox">
+			<!-- Mensagens serão adicionadas aqui dinamicamente -->
+		</div>
+    
+  <span id="logado" data-logado="<?php echo $logado; ?>"></span>
+  </div>
 
-      <div class="message-wrapper reverse">
-        <img class="message-pp" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80" alt="profile-pic">
-        <div class="message-box-wrapper">
-          <div class="message-box">
-           <?php
-		if(isset($_SESSION['user1'])){
-			echo $_SESSION['user1'];
-			unset($_SESSION['user1']);
-		} 
-    
-    
-    ?>
-          </div>
-          <span>9h ago</span>
-        </div>
-      </div>
-     
-      
-      </div>
-      <div class="message-wrapper">
-        <img class="message-pp" src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=934&amp;q=80" alt="profile-pic">
-        <div class="message-box-wrapper">
-          <div class="message-box">
-          <?php
-		if(isset($_SESSION['user2'])){
-			echo $_SESSION['user2'];
-			unset($_SESSION['user2']);
-		} 
-    
-    
-    ?>
-          </div>
-          <span>9h ago</span>
-        </div>
-      </div>
-      
-      
-    
-      <script  src="chat/script.js"></script>
-        
-
-      <!-- partial -->
-
-
-<!-- partial -->
-<div class="chat-input-wrapper">
-      <button class="chat-attachment-btn" type="button" onclick="document.getElementById('fileInput').click();" >
-      <input id="fileInput" type="file" style="display:none;" />
-     
+  <div class="chat-input-wrapper">
+      <button class="chat-attachment-btn">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-paperclip" viewBox="0 0 24 24">
           <defs></defs>
           <path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"></path>
-          
         </svg>
       </button>
       <div class="input-wrapper">
-        <input type="text" class="chat-input" placeholder="Insira sua mensagem aqui">
+          <input type="text" id="mensagem" class="chat-input" placeholder="Digite sua mensagem...">
         <button class="emoji-btn">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-smile" viewBox="0 0 24 24">
           <defs></defs>
@@ -450,10 +408,48 @@ if($res=mysqli_query($conn,$sqli)){
         </svg>
       </button>
       </div>
-      <button class="chat-send-btn">Enviar</button>
+      <button class="chat-send-btn" onclick="enviarMensagem()">Enviar</button>
     </div>
+	<script>
+		var ws = new WebSocket("ws://localhost:8080");
 
+		// Quando uma mensagem é recebida pelo servidor WebSocket
+		ws.onmessage = function(event) {
+    var mensagemBlob = event.data;
+    mensagemBlob.text().then(function(mensagem) {
+        var mensagensContainer = document.querySelector(".chatbox");
+        var novaMensagem = document.createElement("div");
+        novaMensagem.className = "message received";
+        
+        novaMensagem.innerHTML = "<div class='message-wrapper reverse'><img class='message-pp' src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=2550&amp;q=80' alt='profile-pic'><div class='message-box-wrapper'><div class='message-box'>" + mensagem + "";
+        mensagensContainer.appendChild(novaMensagem);
+    });
+}
+function enviarMensagem() {
+    var mensagemInput = document.getElementById("mensagem");
+    var mensagem = mensagemInput.value;
+    ws.send(mensagem);
+    mensagemInput.value = "";
+    var mensagensContainer = document.querySelector(".chatbox");
+    var novaMensagem = document.createElement("div");
+    novaMensagem.className = "message sent";
+    var logado = document.getElementById("logado").getAttribute("data-logado");
+    novaMensagem.innerHTML = `<div class="message-wrapper">
+    
+                                  <img class="message-pp" src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=934&amp;q=80" alt="profile-pic">
+                                  <div class="message-box-wrapper">
+                                      <div class="message-box">
+                                          <span class="message-sender">${logado}</span>
+                                          <p class="message-text">${mensagem}</p>
+                                      </div>
+                                      <span class="message-time">9h ago</span>
+                                  </div>
+                              </div>`;
+    mensagensContainer.appendChild(novaMensagem);
+}
 
-
-</div></div></div></body>
+	</script>
+  
+</div>
+</body>
 </html>

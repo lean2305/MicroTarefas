@@ -42,7 +42,7 @@ if($ress=mysqli_query($conn,$verifica)){
     
    
     while($regg=mysqli_fetch_assoc($ress)){
-        //buscar dados na form  coluna saldo
+        //buscar dados na utilizador  coluna saldo
         $valorr = $regg['valor'] ;  
 
         if($valor == $valorr ){
@@ -51,10 +51,10 @@ if($ress=mysqli_query($conn,$verifica)){
           
 
             //Evento pagamento caso não verificado
-            $event= "CREATE EVENT $logado$empregador ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 10080 MINUTE ON COMPLETION NOT PRESERVE DO UPDATE form SET saldo = saldo + $valor WHERE utilizador='$logado';" ;
+            $event= "CREATE EVENT $logado$empregador ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 10080 MINUTE ON COMPLETION NOT PRESERVE DO UPDATE utilizador SET saldo = saldo + $valor WHERE utilizador='$logado';" ;
             $CONNT = mysqli_query($conn, $event);
 
-            $events= "CREATE EVENT $empregador ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 10080 MINUTE ON COMPLETION NOT PRESERVE DO UPDATE form SET saldo = saldo - $valor WHERE utilizador='$empregador';";
+            $events= "CREATE EVENT $empregador ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 10080 MINUTE ON COMPLETION NOT PRESERVE DO UPDATE utilizador SET saldo = saldo - $valor WHERE utilizador='$empregador';";
             $CONNTs = mysqli_query($conn, $events);
 
             $eventi= "CREATE EVENT $empregador$logado$empregador ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 10080 MINUTE ON COMPLETION NOT PRESERVE DO DELETE FROM provas WHERE trabalhador='$logado';";

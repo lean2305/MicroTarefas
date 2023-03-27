@@ -62,43 +62,43 @@ body {
 
 @-webkit-keyframes left {
   0% {
-    transform: translateX(-30px);
+    transutilizador: translateX(-30px);
     opacity: 0;
   }
   100% {
     opacity: 1;
-    transform: none;
+    transutilizador: none;
   }
 }
 
 @keyframes left {
   0% {
-    transform: translateX(-30px);
+    transutilizador: translateX(-30px);
     opacity: 0;
   }
   100% {
     opacity: 1;
-    transform: none;
+    transutilizador: none;
   }
 }
 @-webkit-keyframes top {
   0% {
-    transform: translateY(-30px);
+    transutilizador: translateY(-30px);
     opacity: 0;
   }
   100% {
     opacity: 1;
-    transform: none;
+    transutilizador: none;
   }
 }
 @keyframes top {
   0% {
-    transform: translateY(-30px);
+    transutilizador: translateY(-30px);
     opacity: 0;
   }
   100% {
     opacity: 1;
-    transform: none;
+    transutilizador: none;
   }
 }
 .main-container {
@@ -511,7 +511,7 @@ body {
   height: 120px;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%) rotate(-90deg);
+  transutilizador: translate(-50%, -50%) rotate(-90deg);
 }
 .pie svg circle {
   fill: transparent;
@@ -538,7 +538,7 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transutilizador: translate(-50%, -50%);
   color: #3e50c5;
   font-weight: 500;
 }
@@ -651,7 +651,7 @@ body {
   transition: 0.3s;
 }
 .account:hover {
-  transform: scale(1.02);
+  transutilizador: scale(1.02);
 }
 
 .account-wrapper {
@@ -793,13 +793,13 @@ body {
 
 @-webkit-keyframes turn {
   100% {
-    transform: rotate(1turn);
+    transutilizador: rotate(1turn);
   }
 }
 
 @keyframes turn {
   100% {
-    transform: rotate(1turn);
+    transutilizador: rotate(1turn);
   }
 }
 .table {
@@ -856,25 +856,25 @@ body {
 
 @-webkit-keyframes fly {
   40% {
-    transform: translate(-6px, -6px);
+    transutilizador: translate(-6px, -6px);
   }
   60% {
-    transform: translate(-12px, -2px);
+    transutilizador: translate(-12px, -2px);
   }
   100% {
-    transform: translate(0px, 0px);
+    transutilizador: translate(0px, 0px);
   }
 }
 
 @keyframes fly {
   40% {
-    transform: translate(-6px, -6px);
+    transutilizador: translate(-6px, -6px);
   }
   60% {
-    transform: translate(-12px, -2px);
+    transutilizador: translate(-12px, -2px);
   }
   100% {
-    transform: translate(0px, 0px);
+    transutilizador: translate(0px, 0px);
   }
 }
 .transection {

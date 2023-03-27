@@ -25,15 +25,15 @@ $assunto = mysqli_query($conn,"SELECT assunto FROM trabalho ");
 
 $dado = mysqli_query($conn,"SELECT * FROM provas");
 
-$saldo = mysqli_query($conn,"SELECT * FROM form");//
+$saldo = mysqli_query($conn,"SELECT * FROM utilizador");//
 
 
 
 
 
 
-$form = "SELECT * FROM form where utilizador = '$logado' ";//buscar tudo na tabela form onde for igual a sessão da pessoa
-if($ress=mysqli_query($conn,$form)){
+$utilizador = "SELECT * FROM utilizador where utilizador = '$logado' ";//buscar tudo na tabela utilizador onde for igual a sessão da pessoa
+if($ress=mysqli_query($conn,$utilizador)){
   
 
     $valor_saldo = array();
@@ -42,7 +42,7 @@ if($ress=mysqli_query($conn,$form)){
     
     while($regg=mysqli_fetch_assoc($ress)){
     
-        $valor_saldo[$ioll] = $regg['saldo'] ;  //buscar dados na form  coluna saldo
+        $valor_saldo[$ioll] = $regg['saldo'] ;  //buscar dados na utilizador  coluna saldo
         
      
 
@@ -188,10 +188,10 @@ while ($linha = mysqli_fetch_array($resultado)){
 
   <h1 style="margin-left:1.5%">O que se espera do trabalhador?</h1>
   <h4 style="margin-left:1.5%"><?php echo $trblh_descricao[$iol]; ?></h4>
-  <form method="POST" action="submeter.php"  enctype="multipart/form-data">
+  <form method="POST" action="submeter.php"  enctype="multipart/utilizador-data">
 
 
-<div class="form" style=" padding-left: 22px;">
+<div class="utilizador" style=" padding-left: 22px;">
    
 
     <input type="hidden" id="assunto" name="assunto" value="<?php echo $trblh_user[$iol];  ?>">
@@ -216,7 +216,7 @@ while ($linha = mysqli_fetch_array($resultado)){
     <script>
         
         function countText() {
-        let text = document.form_main.text.value;
+        let text = document.utilizador_main.text.value;
         document.getElementById('assunto').innerText = text.length;
 
         }
