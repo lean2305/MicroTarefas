@@ -6,10 +6,12 @@ server.on('connection', (socket) => {
   console.log('Cliente conectado.');
 
   socket.on('message', (message) => {
-    console.log('Mensagem recebida:', message);
+    const mensagemJSON = JSON.parse(message);
+    console.log('Mensagem recebida de', mensagemJSON.remetente, ':', mensagemJSON.mensagem);
     server.clients.forEach((client) => {
       if (client !== socket && client.readyState === WebSocket.OPEN) {
         client.send(message);
+        
       }
     });
   });
@@ -18,21 +20,3 @@ server.on('connection', (socket) => {
     console.log('Cliente desconectado.');
   });
 });
-
-const socket = new WebSocket('ws://localhost:8080');
-
-socket.onopen = () => {
-  console.log('Conexão estabelecida.');
-};
-
-socket.onmessage = (event) => {
-  console.log('Mensagem recebida:', event.data);
-};
-
-socket.onclose = () => {
-  console.log('Conexão fechada.');
-};
-
-function sendMessage(message) {
-    socket.send(message);
-  }

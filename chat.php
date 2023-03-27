@@ -385,6 +385,8 @@ if($res=mysqli_query($conn,$sqli)){
   <div class="container">
  
 		<div class="chatbox">
+    
+
 			<!-- Mensagens serão adicionadas aqui dinamicamente -->
 		</div>
     
@@ -410,46 +412,101 @@ if($res=mysqli_query($conn,$sqli)){
       </div>
       <button class="chat-send-btn" onclick="enviarMensagem()">Enviar</button>
     </div>
-	<script>
-		var ws = new WebSocket("ws://localhost:8080");
+    
+    <script>
+  var ws = new WebSocket('ws://localhost:8080');
 
-		// Quando uma mensagem é recebida pelo servidor WebSocket
-		ws.onmessage = function(event) {
-    var mensagemBlob = event.data;
-    mensagemBlob.text().then(function(mensagem) {
-        var mensagensContainer = document.querySelector(".chatbox");
-        var novaMensagem = document.createElement("div");
-        novaMensagem.className = "message received";
-        
-        novaMensagem.innerHTML = "<div class='message-wrapper reverse'><img class='message-pp' src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=2550&amp;q=80' alt='profile-pic'><div class='message-box-wrapper'><div class='message-box'>" + mensagem + "";
+  ws.onopen = function () {
+    console.log('Conexão estabelecida.');
+  };
+
+ 
+  ws.onmessage = function (event) {
+      var mensagemBlob = event.data;
+      mensagemBlob.text().then(function (mensagem) {
+        var mensagemJSON = JSON.parse(mensagem);
+        var mensagensContainer = document.querySelector('.chatbox');
+        var novaMensagem = document.createElement('div');
+        novaMensagem.className = 'message received';
+        buscarImagen(mensagemJSON.fotoPerfil, mensagemJSON.fotoRemetente).then(function (imagensHTML) {
+          novaMensagem.innerHTML =
+          "<div class='message-wrapper reverse'><div class='imagens'>" + imagensHTML + "</div><div class='message-box-wrapper'><div class='message-box'>" +
+          "<span class='message-sender'>" + mensagemJSON.remetente + "</span><p class='message-text'>" + mensagemJSON.mensagem + "</p></div></div></div>";
         mensagensContainer.appendChild(novaMensagem);
+      });
+    });
+  };
+  function enviarMensagem() {
+  var mensagemInput = document.getElementById('mensagem');
+  var mensagem = mensagemInput.value;
+  var logado = document.getElementById('logado').getAttribute('data-logado');
+  var fotoPerfil = document.getElementById('logado').getAttribute('data-fotoperfil');
+  var mensagemJSON = {
+    mensagem: mensagem,
+    remetente: logado,
+    fotoPerfil: fotoPerfil,
+    fotoPerfilRemetente: fotoPerfil
+  };
+  ws.send(JSON.stringify(mensagemJSON));
+  mensagemInput.value = '';
+  var mensagensContainer = document.querySelector('.chatbox');
+  var novaMensagem = document.createElement('div');
+  novaMensagem.className = 'message sent';
+  buscarImagens(fotoPerfil).then(function (imagensHTML) {
+    novaMensagem.innerHTML = `
+      <div class="message-wrapper">
+        <div class="imagens">${imagensHTML}</div>
+        <div class="message-box-wrapper">
+          <div class="message-box">
+            <span class="message-sender">${logado}</span>
+            <p class="message-text">${mensagem}</p>
+          </div>
+          <span class="message-time">9h ago</span>
+        </div>
+      </div>`;
+    mensagensContainer.appendChild(novaMensagem);
+  });
+}
+
+  function buscarImagens(fotoPerfil) {
+    return fetch('buscar-imagens.php')
+      .then(function (response) {
+        return response.text();
+      })
+      .then(function (data) {
+        return data.replace('<img class="message-pp"', '<img class="message-pp" src="./foto/' + fotoPerfil + '"');
+      });
+  }
+
+  function buscarImagen(fotoPerfil, fotoRemetente) {
+  return Promise.all([
+    fetch(fotoPerfil).then(response => response.blob()),
+    fetch(fotoRemetente).then(response => response.blob()),
+  ]).then(function ([perfilBlob, remetenteBlob]) {
+    var imagensHTML = "<img src='" + URL.createObjectURL(perfilBlob) + "' alt='Foto de perfil'>"
+      + "<img src='" + URL.createObjectURL(remetenteBlob) + "' alt='Foto do remetente'>";
+    return imagensHTML;
+  });
+}
+
+
+
+  function buscarImagen(fotoPerfil, fotoRemetente, remetente) {
+  return fetch('buscar-imagens.php?remetente=' + remetente)
+    .then(function (response) {
+      return response.text();
+    })
+    .then(function (data) {
+      return data.replace('<img class="message-pp"', '<img class="message-pp" src="./foto/' + fotoRemetente + '"');
     });
 }
-function enviarMensagem() {
-    var mensagemInput = document.getElementById("mensagem");
-    var mensagem = mensagemInput.value;
-    ws.send(mensagem);
-    mensagemInput.value = "";
-    var mensagensContainer = document.querySelector(".chatbox");
-    var novaMensagem = document.createElement("div");
-    novaMensagem.className = "message sent";
-    var logado = document.getElementById("logado").getAttribute("data-logado");
-    novaMensagem.innerHTML = `<div class="message-wrapper">
-    
-                                  <img class="message-pp" src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=934&amp;q=80" alt="profile-pic">
-                                  <div class="message-box-wrapper">
-                                      <div class="message-box">
-                                          <span class="message-sender">${logado}</span>
-                                          <p class="message-text">${mensagem}</p>
-                                      </div>
-                                      <span class="message-time">9h ago</span>
-                                  </div>
-                              </div>`;
-    mensagensContainer.appendChild(novaMensagem);
-}
+</script>
 
-	</script>
-  
+
+
+
+
+
 </div>
 </body>
 </html>
