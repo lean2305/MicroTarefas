@@ -1,0 +1,17 @@
+CHAT 
+
+iniciar servidor com o codigo: node server.js
+
+e em outro terminal usar este codigo: netstat -an | grep 8080
+
+se tudo estuver bem aparece :
+PS C:\xampp\htdocs\MicroTarefas> netstat -an | findstr 8080
+  TCP    0.0.0.0:8080           0.0.0.0:0              LISTENING
+  TCP    [::]:8080              [::]:0                 LISTENING
+  TCP    [::1]:8080             [::1]:63670            ESTABLISHED
+  TCP    [::1]:63670            [::1]:8080             ESTABLISHED
+
+
+As mensagems apareecem no terminal do nodejs
+
+se so receber no terminal e nao na base dados devo instalar no terminal : npm install mysql

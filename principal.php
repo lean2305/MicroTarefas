@@ -22,6 +22,7 @@ if((!isset($_SESSION['user']) == true) and (!isset($_SESSION['Senha']) == true))
 $logado =$_SESSION['user'];
 
 
+
 //Buscar dados da tabela trabalho
 $assunto = mysqli_query($conn,"SELECT assunto FROM trabalho ");
 

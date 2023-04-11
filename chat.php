@@ -428,11 +428,11 @@ if($res=mysqli_query($conn,$sqli)){
         var mensagensContainer = document.querySelector('.chatbox');
         var novaMensagem = document.createElement('div');
         novaMensagem.className = 'message received';
-        buscarImagen(mensagemJSON.fotoPerfil, mensagemJSON.fotoRemetente).then(function (imagensHTML) {
-          novaMensagem.innerHTML =
-          "<div class='message-wrapper reverse'><div class='imagens'>" + imagensHTML + "</div><div class='message-box-wrapper'><div class='message-box'>" +
-          "<span class='message-sender'>" + mensagemJSON.remetente + "</span><p class='message-text'>" + mensagemJSON.mensagem + "</p></div></div></div>";
-        mensagensContainer.appendChild(novaMensagem);
+        buscar(mensagemJSON.fotoPerfil, mensagemJSON.fotoRemetente, mensagemJSON.remetente).then(function (imagensHTML) {
+  novaMensagem.innerHTML =
+    "<div class='message-wrapper reverse'><div class='imagens'>" + imagensHTML + "</div><div class='message-box-wrapper'><div class='message-box'>" +
+    "<span class='message-sender'>" + mensagemJSON.remetente + "</span><p class='message-text'>" + mensagemJSON.mensagem + "</p></div></div></div>";
+  mensagensContainer.appendChild(novaMensagem);
       });
     });
   };
@@ -469,7 +469,7 @@ if($res=mysqli_query($conn,$sqli)){
 }
 
   function buscarImagens(fotoPerfil) {
-    return fetch('buscar-imagens.php')
+    return fetch('chat/buscar-imagens.php')
       .then(function (response) {
         return response.text();
       })
@@ -478,21 +478,11 @@ if($res=mysqli_query($conn,$sqli)){
       });
   }
 
-  function buscarImagen(fotoPerfil, fotoRemetente) {
-  return Promise.all([
-    fetch(fotoPerfil).then(response => response.blob()),
-    fetch(fotoRemetente).then(response => response.blob()),
-  ]).then(function ([perfilBlob, remetenteBlob]) {
-    var imagensHTML = "<img src='" + URL.createObjectURL(perfilBlob) + "' alt='Foto de perfil'>"
-      + "<img src='" + URL.createObjectURL(remetenteBlob) + "' alt='Foto do remetente'>";
-    return imagensHTML;
-  });
-}
 
 
 
-  function buscarImagen(fotoPerfil, fotoRemetente, remetente) {
-  return fetch('buscar-imagens.php?remetente=' + remetente)
+  function buscar(fotoPerfil, fotoRemetente, remetente) {
+  return fetch('chat/buscar.php?remetente=' + remetente + '&fotoPerfil=' + fotoPerfil)
     .then(function (response) {
       return response.text();
     })
@@ -500,6 +490,7 @@ if($res=mysqli_query($conn,$sqli)){
       return data.replace('<img class="message-pp"', '<img class="message-pp" src="./foto/' + fotoRemetente + '"');
     });
 }
+
 </script>
 
 
