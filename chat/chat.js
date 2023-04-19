@@ -1,6 +1,6 @@
 const WebSocket = require('ws');
 
-const server = new WebSocket.Server({ port: 8080 });
+const server = new WebSocket.Server({ port: 8081 });
 
 // Evento acionado quando um cliente se conecta ao servidor WebSocket
 server.on('connection', (socket) => {

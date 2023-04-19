@@ -388,6 +388,7 @@ if($res=mysqli_query($conn,$sqli)){
     
 
 			<!-- Mensagens serão adicionadas aqui dinamicamente -->
+      
 		</div>
     
   <span id="logado" data-logado="<?php echo $logado; ?>"></span>
@@ -414,7 +415,7 @@ if($res=mysqli_query($conn,$sqli)){
     </div>
     
     <script>
-  var ws = new WebSocket('ws://localhost:8080');
+  var ws = new WebSocket('ws://localhost:8081');
 
   ws.onopen = function () {
     console.log('Conexão estabelecida.');

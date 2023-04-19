@@ -104,7 +104,7 @@ while ($linha = mysqli_fetch_array($resultado)){
    <path d="M255.2 468.6H63.8a21.3 21.3 0 01-21.3-21.2V64.6c0-11.7 9.6-21.2 21.3-21.2h191.4a21.2 21.2 0 100-42.5H63.8A63.9 63.9 0 000 64.6v382.8A63.9 63.9 0 0063.8 511H255a21.2 21.2 0 100-42.5z"></path>
    <path d="M505.7 240.9L376.4 113.3a21.3 21.3 0 10-29.9 30.3l92.4 91.1H191.4a21.2 21.2 0 100 42.6h247.5l-92.4 91.1a21.3 21.3 0 1029.9 30.3l129.3-127.6a21.3 21.3 0 000-30.2z"></path></svg>
  </div>
- <div class="main-container">
+ <div class="main-container" style="overflow: hidden;">
   <div class="header">
    <div class="logo">Micro
     <span class="logo-det">Tarefas</span></div>
@@ -382,100 +382,74 @@ if($res=mysqli_query($conn,$sqli)){
   
   ?>
   <div class="app-main">
-  <div class="container">
+  <div class="container" >
  
 		<div class="chatbox">
-            <?php
-            
-            
-            
-            ?>
-            <?php 
-            
-                            
-            $sqlmsg = "SELECT * FROM menssagem WHERE user1 = '$logado' AND id_amigo = '$id_amigo'";
+      
+    <?php
+// Consulta SQL para selecionar as mensagens em ordem crescente do id_msg
+$sql = "SELECT * FROM menssagem WHERE id_amigo = '$id_amigo' ORDER BY id_msg ASC";
 
+// Executa a consulta SQL
+$result = $conn->query($sql);
 
-                if($res=mysqli_query($conn,$sqlmsg)){
+// Cria um array para armazenar as mensagens
+$mensagens = array();
 
+if ($result->num_rows > 0) {
+    // Itera sobre todas as mensagens retornadas pela consulta SQL
+    while($row = $result->fetch_assoc()) {
+        // Adiciona os dados da mensagem ao array
+        $mensagens[] = array(
+            'sender' => $row['user1'],
+            'text' => $row['texto'],
+            'user2' => $row['user2']
+        );
+    }
+} else {
+    // Caso não haja mensagens, define o array como vazio
+    $mensagens = array();
+}
 
-                    $texto = array();
-
-
-                    $iol = 0;
-
-                    while($reg=mysqli_fetch_assoc($res)){
-                    $texto[$iol] = $reg['texto'];
-                            
-                            
-            ?>
-                <div class="message-wrapper">
-                <?php   foreach ($album as $foto)   {     ?>
-     
-
-        <div class="imagens"> <img class="message-pp" src="<?php echo "./foto/".$foto["nome"] ?>" alt="profile-pic"></div>
-        <?php   }     ?>
-        <div class="message-box-wrapper">
-          <div class="message-box">
-            <span class="message-sender"><?php echo $logado; ?></span>
-            <p class="message-text"><?php echo $texto[$iol]; ?></p>
-          </div>
-          <span class="message-time">9h ago</span>
-        </div>
-      </div>
-            <?php 
-
-                    }}
-
-                    $sqlmsg = "SELECT * FROM menssagem WHERE user2 = '$logado' AND id_amigo = '$id_amigo'";
-
-
-                    if($res=mysqli_query($conn,$sqlmsg)){
+// Itera sobre o array de mensagens e exibe cada uma dentro da estrutura HTML
+foreach ($mensagens as $msg) {
+    // Verifica se a mensagem foi enviada pelo usuário logado
+    if ($msg['sender'] == $logado) {
+        // Se sim, exibe a mensagem do lado direito
+        echo "<div class='message-wrapper'>
+                  <div class='imagens'>
+                      <img class='message-pp' src='./foto/download.png' alt='profile-pic'>
+                  </div>
+                  <div class='message-box-wrapper'>
+                      <div class='message-box'>
+                          <span class='message-sender'>".$msg['sender']."</span>
+                          <p class='message-text'>".$msg['text']."</p>
+                      </div>
+                      <span class='message-time'>9h ago</span>
+                  </div>
+              </div>";
+    } else {
+        // Se não, exibe a mensagem do lado esquerdo
+        echo "<div class='message-wrapper reverse'>
+                  <div class='imagens'>
+                      <img class='message-pp' src='./foto/26.png' alt='profile-pic'>
+                  </div>
+                  <div class='message-box-wrapper'>
+                      <div class='message-box'>
+                          <span class='message-sender'>".$msg['user2']."</span>
+                          <p class='message-text'>".$msg['text']."</p>
+                      </div>
+                      <span class='message-time'>9h ago</span>
+                  </div>
+              </div>
+              <span id='logado' data-logado='<?php echo $logado; ?>'></span>
+              ";
+    }
     
-    
-                        $texto = array();
-                        $user1 = array();
-    
-    
-                        $iol = 0;
-    
-                        while($reg=mysqli_fetch_assoc($res)){
-                        $texto[$iol] = $reg['texto'];  
-                        $user1[$iol] = $reg['user1'];
-                        
-                        $sqlp  ="SELECT * from arquivo where utilizador = '$user1[$iol]' ";
-                        $result = $conn->query($sqlp);
+}
+?>
 
-
-                        while ($linh = mysqli_fetch_array($result)){
-
-                            $albu [] = $linh;
-
-                        }
-            ?>
-            
-      <div class='message-wrapper reverse'>
-
-  <div class='imagens'><img class="message-pp"       <?php   foreach ($albu as $fot)   {     ?> src="<?php  echo "./foto/".$fot["nome"] ?>" alt="profile-pic"  <?php   }     ?>></div>
- 
-    <div class='message-box-wrapper'>
-      <div class='message-box'>
-        <span class='message-sender'><?php echo $user1[$iol] ?></span>
-        <p class='message-text'><?php echo $texto[$iol] ?></p>
-    </div>
-  </div>
-</div>
-            <?php
-            }}
-            
-            ?>
-			<!-- Mensagens serão adicionadas aqui dinamicamente -->
-		</div>
-    
-  <span id="logado" data-logado="<?php echo $logado; ?>"></span>
-  </div>
-
-  <div class="chat-input-wrapper">
+<div class="chat-input-wrapper" id ="minhaDiv">
       <button class="chat-attachment-btn">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-paperclip" viewBox="0 0 24 24">
           <defs></defs>
@@ -494,8 +468,13 @@ if($res=mysqli_query($conn,$sqli)){
       </div>
       <button class="chat-send-btn" onclick="enviarMensagem()">Enviar</button>
     </div>
+
+ <div>
     
     <script>
+
+  minhaDiv.scrollIntoView({block: 'nearest'});
+
   var ws = new WebSocket('ws://localhost:8080');
 
   ws.onopen = function () {
