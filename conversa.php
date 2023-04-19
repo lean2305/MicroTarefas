@@ -405,20 +405,33 @@ if ($result->num_rows > 0) {
             'text' => $row['texto'],
             'user2' => $row['user2']
         );
+        
     }
+    $user1 = $mensagens[0]['sender'];
+        $result = mysqli_query($conn, "SELECT * FROM arquivo WHERE utilizador = '$user1'");
+        $imagem = $result->fetch_assoc()['nome'];
+    
+    $user2 = $mensagens[0]['user2'];
+   
+    $resultt = mysqli_query($conn, "SELECT * FROM arquivo WHERE utilizador = '$user2'");
+    $imagemm = $resultt->fetch_assoc()['nome'];
+
 } else {
     // Caso não haja mensagens, define o array como vazio
     $mensagens = array();
 }
 
-// Itera sobre o array de mensagens e exibe cada uma dentro da estrutura HTML
-foreach ($mensagens as $msg) {
-    // Verifica se a mensagem foi enviada pelo usuário logado
+$utilizador1 = $mensagens[0]['sender'];
+$utilizador2 = $mensagens[0]['user2'];
+if ($user1 == $logado) {
+  //echo"Eu";  foi a primeira pessoa a enviar menssagem
+  foreach ($mensagens as $msg) {
+  
     if ($msg['sender'] == $logado) {
-        // Se sim, exibe a mensagem do lado direito
+        // Se a mensagem foi enviada pelo usuário logado, exibe no lado esquerda
         echo "<div class='message-wrapper'>
                   <div class='imagens'>
-                      <img class='message-pp' src='./foto/download.png' alt='profile-pic'>
+                      <img class='message-pp' src='./foto/$imagem' alt='profile-pic'>
                   </div>
                   <div class='message-box-wrapper'>
                       <div class='message-box'>
@@ -429,26 +442,70 @@ foreach ($mensagens as $msg) {
                   </div>
               </div>";
     } else {
-        // Se não, exibe a mensagem do lado esquerdo
+        // Se a mensagem foi enviada pelo outro usuário, exibe no lado direita
         echo "<div class='message-wrapper reverse'>
-                  <div class='imagens'>
-                      <img class='message-pp' src='./foto/26.png' alt='profile-pic'>
-                  </div>
-                  <div class='message-box-wrapper'>
-                      <div class='message-box'>
-                          <span class='message-sender'>".$msg['user2']."</span>
-                          <p class='message-text'>".$msg['text']."</p>
-                      </div>
-                      <span class='message-time'>9h ago</span>
-                  </div>
-              </div>
-              <span id='logado' data-logado='<?php echo $logado; ?>'></span>
-              ";
+        <div class='imagens'>
+            <img class='message-pp' src='./foto/$imagemm' alt='profile-pic'>
+        </div>
+        <div class='message-box-wrapper'>
+            <div class='message-box'>
+                <span class='message-sender'>".$msg['sender']."</span>
+                <p class='message-text'>".$msg['text']."</p>
+            </div>
+            <span class='message-time'>9h ago</span>
+        </div>
+    </div>
+    <span id='logado' data-logado='$logado'></span>
+    ";
     }
-    
+  }
 }
+else {
+ //echo"ele"; outra pessoa foi a primeira a enviar menssagem
+ foreach ($mensagens as $msg) {
+  
+  if ($msg['sender'] == $logado) {
+      // Se a mensagem foi enviada pelo usuário logado, exibe no lado esquerda
+      echo "<div class='message-wrapper'>
+                <div class='imagens'>
+                    <img class='message-pp' src='./foto/$imagemm' alt='profile-pic'>
+                </div>
+                <div class='message-box-wrapper'>
+                    <div class='message-box'>
+                        <span class='message-sender'>".$msg['sender']."</span>
+                        <p class='message-text'>".$msg['text']."</p>
+                    </div>
+                    <span class='message-time'>9h ago</span>
+                </div>
+            </div>";
+  } else {
+      // Se a mensagem foi enviada pelo outro usuário, exibe no lado direita
+      echo "<div class='message-wrapper reverse'>
+      <div class='imagens'>
+          <img class='message-pp' src='./foto/$imagem' alt='profile-pic'>
+      </div>
+      <div class='message-box-wrapper'>
+          <div class='message-box'>
+              <span class='message-sender'>".$msg['sender']."</span>
+              <p class='message-text'>".$msg['text']."</p>
+          </div>
+          <span class='message-time'>9h ago</span>
+      </div>
+  </div>
+  <span id='logado' data-logado='$logado'></span>
+  ";
+  }
+}
+}
+
+// Itera sobre o array de mensagens e exibe cada uma dentro da estrutura HTML
+
+
 ?>
 
+<span id="logadoo" data-logadoo="<?php echo $logado; ?>"></span>
+    
+</div>
 <div class="chat-input-wrapper" id ="minhaDiv">
       <button class="chat-attachment-btn">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-paperclip" viewBox="0 0 24 24">
@@ -469,8 +526,7 @@ foreach ($mensagens as $msg) {
       <button class="chat-send-btn" onclick="enviarMensagem()">Enviar</button>
     </div>
 
- <div>
-    
+ 
     <script>
 
   minhaDiv.scrollIntoView({block: 'nearest'});
@@ -500,14 +556,15 @@ foreach ($mensagens as $msg) {
   function enviarMensagem() {
   var mensagemInput = document.getElementById('mensagem');
   var mensagem = mensagemInput.value;
-  var logado = document.getElementById('logado').getAttribute('data-logado');
-  var fotoPerfil = document.getElementById('logado').getAttribute('data-fotoperfil');
+  var logadoo = document.getElementById('logadoo').getAttribute('data-logadoo');
+  var fotoPerfil = document.getElementById('logadoo').getAttribute('data-fotoperfil');
   var mensagemJSON = {
     mensagem: mensagem,
-    remetente: logado,
+    remetente: logadoo,
     fotoPerfil: fotoPerfil,
     fotoPerfilRemetente: fotoPerfil
   };
+  
   ws.send(JSON.stringify(mensagemJSON));
   mensagemInput.value = '';
   var mensagensContainer = document.querySelector('.chatbox');
@@ -519,7 +576,7 @@ foreach ($mensagens as $msg) {
         <div class="imagens">${imagensHTML}</div>
         <div class="message-box-wrapper">
           <div class="message-box">
-            <span class="message-sender">${logado}</span>
+            <span class="message-sender">${logadoo}</span>
             <p class="message-text">${mensagem}</p>
           </div>
           <span class="message-time">9h ago</span>
@@ -552,14 +609,13 @@ foreach ($mensagens as $msg) {
     });
 }
 
-
 </script>
 
 
+<div>
 
 
 
 
-</div>
 </body>
 </html>
