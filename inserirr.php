@@ -32,9 +32,9 @@ $categoria = filter_input(INPUT_POST,'inserir', FILTER_SANITIZE_STRING);
 
 
 
+echo $categoria;
 
-
-$result_utilizador="INSERT INTO trabalho (assunto, descricao,valor,utilizador,categoria) VALUES('$assunto','$descricao','$valor','$user','$categoria')";
+$result_utilizador="INSERT INTO trabalho (assunto, descricao,valor,utilizador,id_categoria) VALUES('$assunto','$descricao','$valor','$user','$categoria')";
 $resultado_utilizador = mysqli_query($conn, $result_utilizador);  
 
 

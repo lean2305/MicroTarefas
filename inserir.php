@@ -129,7 +129,7 @@ if($ress=mysqli_query($conn,$utilizador)){
 </center>
 
 
-     <select class="select" name="inserir">
+     <select class="select" name="select">
         <option name="inserir" value="" disabled selected>Categoria</option> 
         <?php 
 
@@ -144,11 +144,12 @@ if($res=mysqli_query($conn,$sql)){
     while($reg=mysqli_fetch_assoc($res)){
 
     $categoria[$iol] = $reg['categoria'];
+    $id_categotia[$iol] = $reg['id_categoria'];
 
 
 ?>
         
-        <option name="inserir" value="<?php echo $categoria[$iol]; ?>" ><?php echo $categoria[$iol]; ?></option> 
+        <option name="inserir" value="<?php echo $id_categotia[$iol]; ?>" ><?php echo $categoria[$iol]; ?></option> 
         
         
 

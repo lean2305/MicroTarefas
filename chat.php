@@ -207,10 +207,17 @@ while ($linha = mysqli_fetch_array($resultado)){
       
       $query= "SELECT id_amigo from amigos where utilizador = '$logado'";
       $query_run = mysqli_query($conn,$query);
-
       $row = mysqli_num_rows($query_run);
 
-      echo $row ;
+      $queryy= "SELECT id_amigo from amigos where amigo = '$logado'";
+      $query_runn = mysqli_query($conn,$queryy);
+      $roww = mysqli_num_rows($query_runn);
+
+      
+
+      $total = $row + $roww;
+
+      echo $total ;
       
       
       ?></span>

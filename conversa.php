@@ -83,7 +83,8 @@ while ($linha = mysqli_fetch_array($resultado)){
 
 </head>
 <body>
-
+  
+<div type="hidden" id="id-amigo" data-id="<?php echo $id_amigo; ?>"></div>
 <!-- Header contendo botões, saldo e nome do utilizador -->
 <div class="wrapper">
  <div class="left-side">
@@ -207,10 +208,17 @@ while ($linha = mysqli_fetch_array($resultado)){
       
       $query= "SELECT id_amigo from amigos where utilizador = '$logado'";
       $query_run = mysqli_query($conn,$query);
-
       $row = mysqli_num_rows($query_run);
 
-      echo $row ;
+      $queryy= "SELECT id_amigo from amigos where amigo = '$logado'";
+      $query_runn = mysqli_query($conn,$queryy);
+      $roww = mysqli_num_rows($query_runn);
+
+      
+
+      $total = $row + $roww;
+
+      echo $total ;
       
       
       ?></span>
@@ -389,7 +397,7 @@ if($res=mysqli_query($conn,$sqli)){
     <?php
 // Consulta SQL para selecionar as mensagens em ordem crescente do id_msg
 $sql = "SELECT * FROM menssagem WHERE id_amigo = '$id_amigo' ORDER BY id_msg ASC";
-
+$user1 =""; 
 // Executa a consulta SQL
 $result = $conn->query($sql);
 
@@ -421,8 +429,7 @@ if ($result->num_rows > 0) {
     $mensagens = array();
 }
 
-$utilizador1 = $mensagens[0]['sender'];
-$utilizador2 = $mensagens[0]['user2'];
+
 if ($user1 == $logado) {
   //echo"Eu";  foi a primeira pessoa a enviar menssagem
   foreach ($mensagens as $msg) {
@@ -523,13 +530,59 @@ else {
         </svg>
       </button>
       </div>
+      <span type="hidden" id="id" data-id="<?php echo $id_amigo; ?>"></span>
+     
       <button class="chat-send-btn" onclick="enviarMensagem()">Enviar</button>
-    </div>
+      <?php 
+      $sqlid = "SELECT * FROM amigos where id_amigo = '$id_amigo' ";
 
- 
+      //Conecta com a sessão para obter o saldo para exibir
+      if($ress=mysqli_query($conn,$sqlid)){
+        
+      
+          $remetente = array();
+        
+          $ioll = 0;
+          
+          while($regg=mysqli_fetch_assoc($ress)){
+      
+              //buscar dados na utilizador  coluna saldo
+              $remetente[$ioll] = $regg['utilizador'] ;  
+
+      ?>  
+
+    </div>
+    <?php }}
+    if($remetente[$ioll] != $logado){
+      $destinatario = $remetente[$ioll];
+    }else{
+      $sqlod = "SELECT * FROM amigos where id_amigo = '$id_amigo' ";
+
+      //Conecta com a sessão para obter o saldo para exibir
+      if($ress=mysqli_query($conn,$sqlod)){
+        
+      
+          $remetente = array();
+        
+          $ioll = 0;
+          
+          while($regg=mysqli_fetch_assoc($ress)){
+      
+              //buscar dados na utilizador  coluna saldo
+              $remetentee[$ioll] = $regg['amigo'] ;  
+              $destinatario = $remetentee[$ioll];
+          }}
+    }
+    
+    ?>
+    <span  id="remet" data-remet="<?php echo $destinatario; ?>"></span>
+    <span type="hidden" id="loga" data-loga="<?php echo $logado; ?>"></span>
+
+    
     <script>
 
   minhaDiv.scrollIntoView({block: 'nearest'});
+  
 
   var ws = new WebSocket('ws://localhost:8080');
 
@@ -557,10 +610,16 @@ else {
   var mensagemInput = document.getElementById('mensagem');
   var mensagem = mensagemInput.value;
   var logadoo = document.getElementById('logadoo').getAttribute('data-logadoo');
+  var id = document.getElementById('id').getAttribute('data-id');
+  var remet = document.getElementById('remet').getAttribute('data-remet');
+  var loga = document.getElementById('loga').getAttribute('data-loga');
   var fotoPerfil = document.getElementById('logadoo').getAttribute('data-fotoperfil');
   var mensagemJSON = {
     mensagem: mensagem,
     remetente: logadoo,
+    id: id,
+    loga : loga,
+    remet: remet,
     fotoPerfil: fotoPerfil,
     fotoPerfilRemetente: fotoPerfil
   };

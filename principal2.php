@@ -152,9 +152,9 @@ if($ress=mysqli_query($conn,$utilizador)){
         <option name="select" value="" disabled selected>Categoria</option> 
         <?php 
 
-$sqlo ='SELECT * FROM trabalho';
+$sql ='SELECT * FROM categoria';
 
-if($res=mysqli_query($conn,$sqlo)){
+if($res=mysqli_query($conn,$sql)){
 
     $categoria = array();
 
@@ -162,12 +162,13 @@ if($res=mysqli_query($conn,$sqlo)){
 
     while($reg=mysqli_fetch_assoc($res)){
 
-    $categoria[$iol] = $reg['categoria'];
+    $categoriaa[$iol] = $reg['categoria'];
+    $id_categotia[$iol] = $reg['id_categoria'];
 
 
 ?>
         
-        <option name="select" value="<?php echo $categoria[$iol]; ?>" ><?php echo $categoria[$iol]; ?></option> 
+        <option name="select" value="<?php echo $categoriaa[$ioll]; ?>" ><?php echo $categoriaa[$iol]; ?></option> 
         
         
 
@@ -205,12 +206,22 @@ if($res=mysqli_query($conn,$sqlo)){
       <!--Codigo php para obter dados e exibir no site--->
       <?php 
 $categoria = filter_input(INPUT_POST,'select', FILTER_SANITIZE_STRING);
-  //buscar tudo na tabela trabalho    
-  $sql = "SELECT * FROM trabalho WHERE categoria = '$categoria'";
+  //buscar tudo na tabela trabalho   
+   $sqlz  = "SELECT * FROM categoria WHERE categoria ='$categoria'";
+  if($res=mysqli_query($conn,$sqlz)){
   
+
+    $id = array(); 
+  $iol = 0;
   
+  while($reidg=mysqli_fetch_assoc($res)){
   
-  if($res=mysqli_query($conn,$sql)){
+      $id[$iol] = $reidg['id_categoria'] ;
+  
+      $sqlm = "SELECT * FROM trabalho WHERE id_categoria ='$id[$iol]' ";
+  
+      
+  if($res=mysqli_query($conn,$sqlm)){
   
 
   $trblh_asunto = array();
@@ -273,7 +284,7 @@ $categoria = filter_input(INPUT_POST,'select', FILTER_SANITIZE_STRING);
         <td>
          <span><?php echo $trblh_asunto[$iol]; ?></span>
         </td>
-        <td style=" padding-left: 30px;"><strong><?php echo $trblh_valor[$iol]; ?>€</strong></td>
+        <td style=" padding-left: 30px;"><strong><?php echo  $trblh_valor[$iol]; ?>€</strong></td>
         <td style=" padding-left: 30px;"><?php echo $trblh_user[$iol]; ?></td>
         <td style=" padding-left: 30px;"><?php echo "<a class='cards-button buttonver' href='trabalho.php?id=" . $reg['id_trabalho'] . "'>Abrir</a><br>"; ?></td>
         
@@ -293,7 +304,7 @@ $categoria = filter_input(INPUT_POST,'select', FILTER_SANITIZE_STRING);
       <?php
 
 }
-}
+}}}
 
 $iol =$iol +1;//adicionar +1 na variavel iol
 ?>

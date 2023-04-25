@@ -20,7 +20,7 @@ connection.connect((error) => {
 
 function inserirMensagem(mensagemJSON) {
   
-  const { remetente, mensagem } = mensagemJSON;
+  const { remetente, mensagem, id, loga, remet} = mensagemJSON;
   const user1 = 'admin';// Exemplo, você precisa definir o valor correto
   const user2 = 'aaaaaa';// Exemplo, você precisa definir o valor correto
   const id_amigo = 90; // Exemplo, você precisa definir o valor correto
@@ -29,7 +29,7 @@ function inserirMensagem(mensagemJSON) {
     INSERT INTO menssagem (texto, user1, user2, id_amigo)
     VALUES (?, ?, ?, ?)
   `;
-  const values = [mensagem, user1, user2, id_amigo];
+  const values = [mensagem, loga, remet, id];
 
   connection.query(query, values, (error, result) => {
     if (error) {
