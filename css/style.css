@@ -36,6 +36,42 @@ body {
   margin: 0 auto;
 }
 
+.estrela1:hover ~ .estrela1,
+.estrela1:hover {
+  color: yellow;
+}
+
+.estrela2:hover ~ .estrela1,
+.estrela2:hover ~ .estrela2,
+.estrela2:hover {
+  color: yellow;
+}
+
+.estrela3:hover ~ .estrela1,
+.estrela3:hover ~ .estrela2,
+.estrela3:hover ~ .estrela3,
+.estrela3:hover {
+  color: yellow;
+}
+
+.estrela4:hover ~ .estrela1,
+.estrela4:hover ~ .estrela2,
+.estrela4:hover ~ .estrela3,
+.estrela4:hover ~ .estrela4,
+.estrela4:hover {
+  color: yellow;
+}
+
+.estrela5:hover ~ .estrela1,
+.estrela5:hover ~ .estrela2,
+.estrela5:hover ~ .estrela3,
+.estrela5:hover ~ .estrela4,
+.estrela5:hover ~ .estrela5,
+.estrela5:hover {
+  color: yellow;
+}
+
+
 .left-side {
   width: 6rem;
   display: flex;
