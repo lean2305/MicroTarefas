@@ -45,5 +45,6 @@ if($ress=mysqli_query($conn,$sql)){
 
         $result_avaliacao="UPDATE utilizador SET avaliacao = '$dividir' WHERE utilizador = '$empregador'  ";
         $resultado_avaliacao = mysqli_query($conn, $result_avaliacao);
-    }}
+}   }
+header('Location: principal.php');
 ?>

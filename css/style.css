@@ -25,6 +25,7 @@ body {
   font-family: "Inter", sans-serif;
   background-color: #252954;
   color: #9b9ca7;
+  display: contents;
 }
 
 .wrapper {
