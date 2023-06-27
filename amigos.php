@@ -21,8 +21,6 @@ $logado =$_SESSION['user'];
 
 $logado == '$logado';
 
-
-
 $amigo =  addslashes($_POST["amigo"]);
 
 
