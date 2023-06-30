@@ -14,6 +14,7 @@ body{
   background-size:cover;
   background-repeat:no-repeat;
   background-position: center;
+  display: contents;
 }
 
 /* colors 8a3aff, 6f79ff, 3a9fff black-> 1f4568  grey->8198ae*/

@@ -240,11 +240,11 @@ while ($linha = mysqli_fetch_array($resultado)){
         <div class="account-cash">
           <div class="stars">
 
-              <span class="estrela1" onclick="parent.location='avaliacao.php?value=1&nome=<?php echo $empregador[$iol] ?>'" class="star">★</span>
-              <span class="estrela2" onclick="parent.location='avaliacao.php?value=2&nome=<?php echo $empregador[$iol] ?>'" class="star">★</span>
-              <span class="estrela3" onclick="parent.location='avaliacao.php?value=3&nome=<?php echo $empregador[$iol] ?>'" class="star">★</span>
-              <span class="estrela4" onclick="parent.location='avaliacao.php?value=4&nome=<?php echo $empregador[$iol] ?>'" class="star">★</span>
-              <span class="estrela5" onclick="parent.location='avaliacao.php?value=5&nome=<?php echo $empregador[$iol] ?>'" class="star">★</span>
+              <span onclick="parent.location='avaliacao.php?value=1&nome=<?php echo $empregador[$iol] ?>'" class="star">★</span>
+              <span onclick="parent.location='avaliacao.php?value=2&nome=<?php echo $empregador[$iol] ?>'" class="star">★</span>
+              <span onclick="parent.location='avaliacao.php?value=3&nome=<?php echo $empregador[$iol] ?>'" class="star">★</span>
+              <span onclick="parent.location='avaliacao.php?value=4&nome=<?php echo $empregador[$iol] ?>'" class="star">★</span>
+              <span onclick="parent.location='avaliacao.php?value=5&nome=<?php echo $empregador[$iol] ?>'" class="star">★</span>
 
           </div>    
         </div>
