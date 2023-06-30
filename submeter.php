@@ -50,16 +50,20 @@ if($ress=mysqli_query($conn,$verifica)){
                                     
           
 
-            //Evento pagamento caso não verificado
-            $event= "CREATE EVENT $logado$empregador ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 10080 MINUTE ON COMPLETION NOT PRESERVE DO UPDATE utilizador SET saldo = saldo + $valor WHERE utilizador='$logado';" ;
-            $CONNT = mysqli_query($conn, $event);
+        
 
-            $events= "CREATE EVENT $empregador ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 10080 MINUTE ON COMPLETION NOT PRESERVE DO UPDATE utilizador SET saldo = saldo - $valor WHERE utilizador='$empregador';";
-            $CONNTs = mysqli_query($conn, $events);
+// Generate a random number
+$randomNumber = rand(1000, 9999);
 
-            $eventi= "CREATE EVENT $empregador$logado$empregador ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 10080 MINUTE ON COMPLETION NOT PRESERVE DO DELETE FROM provas WHERE trabalhador='$logado';";
-            $CONNTi = mysqli_query($conn, $eventi);
+// Create event names with random numbers
+$event = "CREATE EVENT ${logado}${empregador}${randomNumber} ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 10080 MINUTE ON COMPLETION NOT PRESERVE DO UPDATE utilizador SET saldo = saldo + $valor WHERE utilizador='$logado';";
+$events = "CREATE EVENT ${empregador}${randomNumber} ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 10080 MINUTE ON COMPLETION NOT PRESERVE DO UPDATE utilizador SET saldo = saldo - $valor WHERE utilizador='$empregador';";
+$eventi = "CREATE EVENT ${empregador}${logado}${empregador}${randomNumber} ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 10080 MINUTE ON COMPLETION NOT PRESERVE DO DELETE FROM provas WHERE trabalhador='$logado';";
 
+// Execute the queries
+$CONNT = mysqli_query($conn, $event);
+$CONNTs = mysqli_query($conn, $events);
+$CONNTi = mysqli_query($conn, $eventi);
 
 
 $arquivo = $_FILES['arquivo']['name'];
@@ -147,6 +151,7 @@ echo "
     </script>
 ";	
 }else{
+    
 //Upload não efetuado com sucesso, exibe a mensagem
 echo "
     <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/pap/testes.php'>

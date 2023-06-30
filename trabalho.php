@@ -188,7 +188,8 @@ while ($linha = mysqli_fetch_array($resultado)){
 
   <h1 style="margin-left:1.5%">O que se espera do trabalhador?</h1>
   <h4 style="margin-left:1.5%"><?php echo $trblh_descricao[$iol]; ?></h4>
-  <form method="POST" action="submeter.php"  enctype="multipart/utilizador-data">
+  <form method="POST" action="submeter.php" enctype="multipart/form-data">
+
 
 
 <div class="utilizador" style=" padding-left: 22px;">
