@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 22-Mar-2023 às 17:59
+-- Tempo de geração: 30-Jun-2023 às 22:46
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.2.0
 
@@ -40,8 +40,9 @@ CREATE TABLE `amigos` (
 
 INSERT INTO `amigos` (`id_amigo`, `utilizador`, `amigo`, `estado`) VALUES
 (67, 'admin', 'JonaSilva', ''),
-(68, 'admin', 'aaaaaa', ''),
-(69, 'admin', 'sdfsdsads', '');
+(69, 'admin', 'sdfsdsads', ''),
+(90, 'aaaaaa', 'admin', ''),
+(91, 'a', 'admin', '');
 
 -- --------------------------------------------------------
 
@@ -66,7 +67,9 @@ INSERT INTO `arquivo` (`id`, `id_utilizador`, `utilizador`, `nome`) VALUES
 (49, 0, 'JonaSilva', 'download.png'),
 (50, 0, 'aaaaaa', '26.png'),
 (52, 0, 'admin', 'download.png'),
-(53, 0, 'dssd', 'download.png');
+(53, 0, 'dssd', 'download.png'),
+(54, 0, 'adminsd', 'download.png'),
+(55, 0, 'a', 'download.png');
 
 -- --------------------------------------------------------
 
@@ -84,7 +87,10 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`id_categoria`, `categoria`) VALUES
-(2, 'website');
+(2, 'website'),
+(3, 'Youtube'),
+(4, 'Facebook'),
+(5, 'Aplicação\r\n');
 
 -- --------------------------------------------------------
 
@@ -139,8 +145,30 @@ CREATE TABLE `menssagem` (
 --
 
 INSERT INTO `menssagem` (`id_msg`, `texto`, `user1`, `user2`, `id_amigo`) VALUES
-(1, 'Olá, tudo bem contigo?Queria te perguntar uma coisa se fosse possivel?', 'admin', 'aaaaaa', 68),
-(2, 'ola tudo otimo e contigo???', 'aaaaaa', 'admin', 68);
+(86, 'admin', 'admin', 'aaaaaa', 90),
+(87, 'admin', 'admin', 'aaaaaa', 90),
+(88, 'aaaaaa', 'aaaaaa', 'admin', 90),
+(89, 'aaaaa', 'aaaaaa', 'admin', 90),
+(90, 'sou o admin', 'admin', 'aaaaaa', 90),
+(91, 'sou novamente o admin a escrever este texto para testar se o chat funciona corretamente', 'admin', 'aaaaaa', 90),
+(92, 'admin', 'admin', 'aaaaaa', 90),
+(93, 'admin do aço', 'admin', 'aaaaaa', 90),
+(94, 'oi  sou admin', 'admin', 'aaaaaa', 90),
+(95, 'ewradmin', 'admin', 'aaaaaa', 90),
+(97, 'admin', 'admin', 'aaaaaa', 90),
+(98, 'opahcrlh', 'admin', 'aaaaaa', 90),
+(99, 'asas', 'admin', 'aaaaaa', 90),
+(101, 'aeeeee', 'admin', 'aaaaaa', 90),
+(106, 'aaaaaaaa', 'admin', 'aaaaaa', 90),
+(109, 'aaq', 'admin', 'aaaaaa', 90),
+(110, 'ai', 'admin', 'aaaaaa', 90),
+(111, 'ww', 'admin', 'aaaaaa', 90),
+(112, 'ooo', 'admin', 'aaaaaa', 90),
+(115, 'aaaaa', 'aaaaaa', 'admin', 90),
+(116, 'adminn', 'admin', 'aaaaaa', 90),
+(118, 'asssa', 'admin', 'JonaSilva', 67),
+(119, 'oi', 'admin', 'JonaSilva', 67),
+(120, 'ola', 'JonaSilva', 'admin', 67);
 
 -- --------------------------------------------------------
 
@@ -182,7 +210,8 @@ CREATE TABLE `provas` (
 --
 
 INSERT INTO `provas` (`id_prova`, `empregador`, `provas`, `trabalhador`, `valor`, `estado`, `print`) VALUES
-(142, 'admin', 'Link:http://localhost/microTarefas/verprova.php?id=142', 'leandro', 0.05, 'pendente', 'd733345e4f11231904e7634a04439e21.gif');
+(142, 'admin', 'Link:http://localhost/microTarefas/verprova.php?id=142', 'leandro', 0.05, 'pendente', 'd733345e4f11231904e7634a04439e21.gif'),
+(145, 'admin', 'as', 'a', 0.5, 'pendente', 'Adicionar um subtítulo (1).png');
 
 -- --------------------------------------------------------
 
@@ -224,7 +253,8 @@ CREATE TABLE `trabalho` (
 --
 
 INSERT INTO `trabalho` (`id_trabalho`, `assunto`, `descricao`, `valor`, `utilizador`, `id_categoria`) VALUES
-(111, 'ideee', 'dffd', 0.5, 'admin', 2);
+(112, 'Assistir vÃ­deo youtube', 'dsdsd', 0.5, 'admin', 3),
+(114, 'se', 'se', 0.05, 'a', 0);
 
 -- --------------------------------------------------------
 
@@ -251,9 +281,11 @@ INSERT INTO `utilizador` (`id_utilizador`, `nome`, `sobrenome`, `utilizador`, `p
 (1, 'Lean', 'oliv', '23', '23', 5.55, '', 0),
 (2, 'aaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 0, '', 0),
 (3, 'admin', 'admin', 'admin', 'admin', 11.75, '', 0),
-(4, 'oliveira', 'sdds', 'dssd', 'sdsd', 3.9, '', 4.01562),
+(4, 'oliveira', 'sdds', 'dssd', 'sdsd', 3.9, '', 4.43848),
 (5, 'João', 'Silva', 'JonaSilva', 'Jonecas', 0, '', 0),
-(6, 'Leansdas', 'sdfsdas', 'sdfsdsads', 'sasds', 0, '', 0);
+(6, 'Leansdas', 'sdfsdas', 'sdfsdsads', 'sasds', 0, '', 0),
+(8, 'admin', 'admin', 'adminsd', 'admin', 0, '', 0),
+(9, 'a', 'a', 'a', 'a', 0, '', 0);
 
 --
 -- Índices para tabelas despejadas
@@ -270,8 +302,7 @@ ALTER TABLE `amigos`
 --
 ALTER TABLE `arquivo`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `utilizador` (`utilizador`),
-  ADD UNIQUE KEY `utilizador_2` (`utilizador`);
+  ADD KEY `id_utilizador` (`id_utilizador`);
 
 --
 -- Índices para tabela `categoria`
@@ -289,7 +320,8 @@ ALTER TABLE `historico_trabalho`
 -- Índices para tabela `menssagem`
 --
 ALTER TABLE `menssagem`
-  ADD PRIMARY KEY (`id_msg`);
+  ADD PRIMARY KEY (`id_msg`),
+  ADD KEY `id_amigo` (`id_amigo`);
 
 --
 -- Índices para tabela `notificacao`
@@ -334,19 +366,19 @@ ALTER TABLE `utilizador`
 -- AUTO_INCREMENT de tabela `amigos`
 --
 ALTER TABLE `amigos`
-  MODIFY `id_amigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id_amigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT de tabela `arquivo`
 --
 ALTER TABLE `arquivo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT de tabela `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `historico_trabalho`
@@ -358,7 +390,7 @@ ALTER TABLE `historico_trabalho`
 -- AUTO_INCREMENT de tabela `menssagem`
 --
 ALTER TABLE `menssagem`
-  MODIFY `id_msg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_msg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT de tabela `notificacao`
@@ -370,7 +402,7 @@ ALTER TABLE `notificacao`
 -- AUTO_INCREMENT de tabela `provas`
 --
 ALTER TABLE `provas`
-  MODIFY `id_prova` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
+  MODIFY `id_prova` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
 
 --
 -- AUTO_INCREMENT de tabela `report`
@@ -382,23 +414,23 @@ ALTER TABLE `report`
 -- AUTO_INCREMENT de tabela `trabalho`
 --
 ALTER TABLE `trabalho`
-  MODIFY `id_trabalho` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `id_trabalho` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT de tabela `utilizador`
 --
 ALTER TABLE `utilizador`
-  MODIFY `id_utilizador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_utilizador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restrições para despejos de tabelas
 --
 
 --
--- Limitadores para a tabela `trabalho`
+-- Limitadores para a tabela `menssagem`
 --
-ALTER TABLE `trabalho`
-  ADD CONSTRAINT `trabalho_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE NO ACTION ON UPDATE CASCADE;
+ALTER TABLE `menssagem`
+  ADD CONSTRAINT `menssagem_ibfk_1` FOREIGN KEY (`id_amigo`) REFERENCES `amigos` (`id_amigo`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
