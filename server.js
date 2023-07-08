@@ -14,6 +14,7 @@ server.on('connection', (socket) => {
     });
   });
 
+  
   socket.on('close', () => {
     console.log('Cliente desconectado.');
   });
