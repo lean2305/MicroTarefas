@@ -105,8 +105,7 @@ while ($linha = mysqli_fetch_array($resultado)){
   <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
   <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
 </svg>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-   <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>
+ 
   <svg viewBox="0 1 511 512" fill="currentColor"  onClick="parent.location='principal.php'">
    <path d="M498.7 222.7L289.8 13.8a46.8 46.8 0 00-66.7 0L14.4 222.6l-.2.2A47.2 47.2 0 0047 303h8.3v153.7a55.2 55.2 0 0055.2 55.2h81.7a15 15 0 0015-15V376.5a25.2 25.2 0 0125.2-25.2h48.2a25.2 25.2 0 0125.1 25.2V497a15 15 0 0015 15h81.8a55.2 55.2 0 0055.1-55.2V303.1h7.7a47.2 47.2 0 0033.4-80.4zm-21.2 45.4a17 17 0 01-12.2 5h-22.7a15 15 0 00-15 15v168.7a25.2 25.2 0 01-25.1 25.2h-66.8V376.5a55.2 55.2 0 00-55.1-55.2h-48.2a55.2 55.2 0 00-55.2 55.2V482h-66.7a25.2 25.2 0 01-25.2-25.2V288.1a15 15 0 00-15-15h-23A17.2 17.2 0 0135.5 244L244.4 35a17 17 0 0124.2 0l208.8 208.8v.1a17.2 17.2 0 010 24.2zm0 0" /></svg>
   <svg viewBox="0 0 512 512" fill="currentColor"  onclick="parent.location='mensagem.php'">
@@ -220,8 +219,7 @@ while ($linha = mysqli_fetch_array($resultado)){
     <div class="discount-profile">
     
     </div>
-    <div   onclick="parent.location='prova.php'" class="button offer-button"><a ></a>Verificar provas</div><br>
-    <div onclick="parent.location='trabalhoativo.php'" class="button offer-button">Ver trabalho ativo</div>
+    
    </div>
    <div class="cards-wrapper" style="--delay: .6s">
     <div class="cards-header">
@@ -238,15 +236,31 @@ while ($linha = mysqli_fetch_array($resultado)){
        <div class="degree">
        
         <div class="account-cash">
-          <div class="stars">
+        <div class="stars">
+  <span onclick="rateAndRefresh(1, '<?php echo $empregador[$iol] ?>')" class="star">★</span>
+  <span onclick="rateAndRefresh(2, '<?php echo $empregador[$iol] ?>')" class="star">★</span>
+  <span onclick="rateAndRefresh(3, '<?php echo $empregador[$iol] ?>')" class="star">★</span>
+  <span onclick="rateAndRefresh(4, '<?php echo $empregador[$iol] ?>')" class="star">★</span>
+  <span onclick="rateAndRefresh(5, '<?php echo $empregador[$iol] ?>')" class="star">★</span>
+</div>
 
-              <span onclick="parent.location='avaliacao.php?value=1&nome=<?php echo $empregador[$iol] ?>'" class="star">★</span>
-              <span onclick="parent.location='avaliacao.php?value=2&nome=<?php echo $empregador[$iol] ?>'" class="star">★</span>
-              <span onclick="parent.location='avaliacao.php?value=3&nome=<?php echo $empregador[$iol] ?>'" class="star">★</span>
-              <span onclick="parent.location='avaliacao.php?value=4&nome=<?php echo $empregador[$iol] ?>'" class="star">★</span>
-              <span onclick="parent.location='avaliacao.php?value=5&nome=<?php echo $empregador[$iol] ?>'" class="star">★</span>
+<script>
+  function rateAndRefresh(value, empregador) {
+    // Use AJAX to call the rating PHP script
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState === 4 && this.status === 200) {
+        // On successful response, reload the current page
+        window.location.reload();
+      }
+    };
+    
+    // Make a GET request to the PHP script with the rating value and empregador
+    xhttp.open("GET", `avaliacao.php?value=${value}&nome=${empregador}`, true);
+    xhttp.send();
+  }
+</script>
 
-          </div>    
         </div>
        
        </div>
@@ -281,14 +295,13 @@ while ($linha = mysqli_fetch_array($resultado)){
      <div class="account-name"> <?php echo $empregador[$iol] ?></div>
    
     </div>
-    <div class="account card">
+    <div class="account card" style="
+    background: none;
+">
 
-     <div class="account-cash"><?php   //codigo do suposto saldo  ?>€ </div>
+     
      
     <?php  }}  }}    ?> 
-     <div class="account-income">Saldo disponivel</div>
-   
-     <div  class="button offer-button"><a class="depositar"  href="depositar.php" style="color:white;text-decoration:none">Depositar</a></li></div>
      
     </div>
    </div>
@@ -342,9 +355,7 @@ while ($linha = mysqli_fetch_array($resultado)){
     <div class="discount-profile">
     
     </div>
-    <div   onclick="parent.location='historico.php'" class="button offer-button"><a ></a>Historico</div><br>
-    <div   onclick="parent.location='pendente.php'" class="button offer-button"><a ></a>Pendentes</div><br>
- 
+   
     
    </div>
   </div>
